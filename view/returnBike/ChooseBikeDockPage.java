@@ -1,4 +1,4 @@
-package view;
+package view.returnBike;
 import controller.*;
 public class ChooseBikeDockPage {
     private ReturnBikePageController controller;
