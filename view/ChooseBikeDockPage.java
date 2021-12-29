@@ -1,4 +1,4 @@
-package boundary;
+package view;
 
 public class ChooseBikeDockPage {
     
