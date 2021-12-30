@@ -5,11 +5,19 @@ import java.util.List;
 import java.sql.Timestamp;
 import model.*;
 import model.generalBike.*;
+import bikeDockSubsystem.*;
+import rentBikeHistorySubsystem.*;
+import rentBikeHistorySubsystem.rentBikeHistoryAPI.*;
+import bikeDockSubsystem.bikeDockAPI.*;
 
 public class ReturnBikePageController {
     private RentBikeHistory rentHis;
     private List<BikeDock> dockList;
+    private IRentBikeHistory rentBikeHistory;
+    private IBikeDockSubsystem bikeDockSubsystem;
     public ReturnBikePageController() {
+        this.rentBikeHistory = new RentBikeHistoryManager();
+        this.bikeDockSubsystem = new BikeDockManager();
     }
     public ReturnBikePage createReturnBikePage(){
         return new ReturnBikePage();
@@ -20,15 +28,16 @@ public class ReturnBikePageController {
     public RentBikeHistory getRentBikeHistory(String userId){
         return new RentBikeHistory();
     }
-    public int getBikeCost(String bikeCode){
-        return 0;
+
+    public List<BikeDock> getDockList(){
+        return bikeDockSubsystem.getDockList();
     }
     public int calculateTotalMoney(RentBikeHistory rentHis){
         Timestamp rentTime = rentHis.getStartTime();
         Timestamp now = new Timestamp(System.currentTimeMillis());
         long diff = now.getTime() - rentTime.getTime();
         int minute = (int) diff / 1000 / 60;
-        int cost = getBikeCost(rentHis.getBikeCode());
+        int cost = rentBikeHistory.getBikeCost(rentHis.getBikeCode());
         if(minute < 10){
             return 0;
         }else{
@@ -37,5 +46,8 @@ public class ReturnBikePageController {
     }
     public String getTransactionInfor(RentBikeHistory rentHis){
         return null;
+    }
+    public boolean checkRented(){
+        return rentBikeHistory.checkBikeRent(this.rentHis.getBikeCode());
     }
 }

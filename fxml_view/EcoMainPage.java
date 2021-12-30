@@ -15,6 +15,9 @@ import java.util.ResourceBundle;
 
 public class EcoMainPage implements Initializable {
     public static Stage rentBikeStage;
+
+    public static Stage returnBikeStage;
+
     public static Integer userId;
 
     @Override
@@ -28,5 +31,14 @@ public class EcoMainPage implements Initializable {
         rentBikeStage = ecoMainController.getInputBikeCodePage();
         Main.home.close();
         rentBikeStage.show();
+    }
+
+    @FXML
+    public void returnBikeClick() throws IOException{
+        returnBikeStage = new Stage();
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("./renturnBike/ChooseBikeDockPage.fxml"));
+        returnBikeStage.setScene(new Scene(anchorPane));
+        Main.home.close();
+        returnBikeStage.show();
     }
 }
