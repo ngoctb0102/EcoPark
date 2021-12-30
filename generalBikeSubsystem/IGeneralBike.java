@@ -1,9 +1,8 @@
 package generalBikeSubsystem;
 
-import java.util.Map;
+import model.generalBike.GeneralBike;
 
 public interface IGeneralBike {
     public boolean checkBikeExist(String bikeCode);
-    public boolean checkBikeRent(String bikeCode);
-    public Map<String, String> getBikeDetail();
+    public GeneralBike getBikeDetail(String bikeCode);
 }
