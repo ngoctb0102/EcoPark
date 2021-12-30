@@ -1,4 +1,4 @@
-package generalBikeSubsystem.GeneralBikeAPI;
+package generalBikeSubsystem.generalBikeAPI;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

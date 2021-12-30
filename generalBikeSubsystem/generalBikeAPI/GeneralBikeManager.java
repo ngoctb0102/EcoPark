@@ -1,4 +1,4 @@
-package generalBikeSubsystem.GeneralBikeAPI;
+package generalBikeSubsystem.generalBikeAPI;
 
 import generalBikeSubsystem.IGeneralBike;
 
@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map;
-import static generalBikeSubsystem.GeneralBikeAPI.GeneralBikeConnector.connect;
+import static generalBikeSubsystem.generalBikeAPI.GeneralBikeConnector.connect;
 
 public class GeneralBikeManager implements IGeneralBike {
     private static Connection connection;

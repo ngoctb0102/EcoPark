@@ -1,4 +1,4 @@
-package GeneralBikeSubsystem;
+package generalBikeSubsystem;
 
 import java.util.Map;
 
