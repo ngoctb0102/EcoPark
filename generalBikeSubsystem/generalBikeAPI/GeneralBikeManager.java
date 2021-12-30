@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.Map;
 import static generalBikeSubsystem.generalBikeAPI.GeneralBikeConnector.connect;
 
 public class GeneralBikeManager implements IGeneralBike {

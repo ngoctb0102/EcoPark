@@ -13,4 +13,16 @@ public class RentBikeHistory {
         this.status = status;
         this.startTime = startTime;
     }
+    public Timestamp getStartTime() {
+        return startTime;
+    }
+    public String getBikeCode() {
+        return bikeCode;
+    }
+    public void setBikeCode(String bikeCode) {
+        this.bikeCode = bikeCode;
+    }
+    public RentBikeHistory() {
+    }
+    
 }
