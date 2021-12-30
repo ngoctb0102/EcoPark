@@ -4,8 +4,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 public class BikeDockconnector {
     private static final String url = "jdbc:postgresql://localhost:5432/ITSSEcoPark";
-    private static final String user = "tuanvu_local";
-    private static final String password = "123456";
+    private static final String user = "postgre";
+    private static final String password = "123";
 
     public static Connection connect(){
         Connection conn = null;
