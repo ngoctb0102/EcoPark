@@ -11,5 +11,17 @@ public class BikeDock {
         this.descriptions = descriptions;
         this.distance = distance;
     }
+    public String getDockId() {
+        return dockId;
+    }
+    public void setDockId(String dockId) {
+        this.dockId = dockId;
+    }
+    public String getDockName() {
+        return dockName;
+    }
+    public void setDockName(String dockName) {
+        this.dockName = dockName;
+    }
     
 }
