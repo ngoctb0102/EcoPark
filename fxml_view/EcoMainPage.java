@@ -35,9 +35,8 @@ public class EcoMainPage implements Initializable {
 
     @FXML
     public void returnBikeClick() throws IOException{
-        returnBikeStage = new Stage();
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("./renturnBike/ChooseBikeDockPage.fxml"));
-        returnBikeStage.setScene(new Scene(anchorPane));
+        EcoMainController ecoMainController = new EcoMainController();
+        returnBikeStage = ecoMainController.getChooseBikeDockPage();
         Main.home.close();
         returnBikeStage.show();
     }

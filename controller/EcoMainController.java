@@ -14,4 +14,10 @@ public class EcoMainController {
         stage.setScene(new Scene(anchorPane));
         return stage;
     }
+    public Stage getChooseBikeDockPage() throws IOException {
+        Stage stage = new Stage();
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/returnBike/BikeDockSelection.fxml"));
+        stage.setScene(new Scene(anchorPane));
+        return stage;
+    }
 }

@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #45A8A8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="view.returnBike.ChooseBikeDockPage">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #45A8A8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.returnBike.ChooseBikeDockPage">
    <children>
       <Pane layoutX="10.0" layoutY="8.0" prefWidth="940.0">
          <children>

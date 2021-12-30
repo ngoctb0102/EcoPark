@@ -25,7 +25,7 @@
             <Font name="Berlin Sans FB" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="737.0" layoutY="212.0" maxHeight="110.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="182.0" text="Select Dock" textFill="#112626">
+      <Button layoutX="737.0" layoutY="212.0" onAction="#returnBikeClick" maxHeight="110.0"  mnemonicParsing="false" prefHeight="50.0" prefWidth="182.0" text="Return Bike" textFill="#112626">
          <font>
             <Font name="Berlin Sans FB" size="24.0" />
          </font>
