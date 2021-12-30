@@ -1,4 +1,4 @@
-package model.GeneralBike;
+package model.generalBike;
 
 import java.util.HashMap;
 import java.util.Map;
