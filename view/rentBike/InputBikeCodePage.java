@@ -4,9 +4,11 @@ import controller.RentBikeController;
 import fxml_view.EcoMainPage;
 import fxml_view.Main;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -16,14 +18,23 @@ import java.util.ResourceBundle;
 
 public class InputBikeCodePage implements Initializable {
     private RentBikeController controller;
-    private Stage generalBikeDetailStage;
+    private Stage inputBikeCodeStage;
     private String bikeCode; //inputted by User
-
     @FXML
     private Text errMessage;
 
     @FXML
     private TextField bikeCodeInput;
+
+    public InputBikeCodePage(){
+        inputBikeCodeStage = new Stage();
+        try{
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../../fxml_view/rentBike/InputBikeCodePage.fxml"));
+            inputBikeCodeStage.setScene(new Scene(anchorPane));
+        }catch (IOException ioException){
+            ioException.printStackTrace();
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
