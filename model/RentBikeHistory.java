@@ -13,4 +13,7 @@ public class RentBikeHistory {
         this.status = status;
         this.startTime = startTime;
     }
+    public RentBikeHistory() {
+    }
+    
 }
