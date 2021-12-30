@@ -1,4 +1,4 @@
-package model.GeneralBike;
+package model.generalBike;
 
 import java.sql.Date;
 import java.util.Map;
@@ -10,7 +10,7 @@ public abstract class GeneralBike {
     protected Date manufacturedDate;
     protected Integer cost;
     protected String image;
-    protected Character type;
+    protected String type;
 
     public String getName() {
         return name;
@@ -60,11 +60,11 @@ public abstract class GeneralBike {
         this.image = image;
     }
 
-    public Character getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Character type) {
+    public void setType(String type) {
         this.type = type;
     }
 
