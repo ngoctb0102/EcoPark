@@ -7,7 +7,7 @@ import static rentBikeHistorySubsystem.rentBikeHistoryAPI.RentBikeHistoryConnect
 public class RentBikeHistoryManager implements IRentBikeHistory {
     public static Connection connection;
     @Override
-    public int getRentBikeNum(String customerId) {
+    public int getRentBikeNum(Integer customerId) {
         int bikeNum = 0;
         try {
             connection = connect();
