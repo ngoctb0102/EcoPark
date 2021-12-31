@@ -13,6 +13,15 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import model.*;
+import controller.EcoMainController;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.stage.Stage;
+import view.rentBike.InputBikeCodePage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class ChooseBikeDockPage implements Initializable{
     private ReturnBikePageController controller;
@@ -63,5 +72,18 @@ public class ChooseBikeDockPage implements Initializable{
         this.controller = new ReturnBikePageController();
         setDockList();
     }
-    
+    public Stage getChooseBikeDockPage() throws IOException {
+        Stage stage = new Stage();
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/returnBike/BikeDockSelection.fxml"));
+        stage.setScene(new Scene(anchorPane));
+        return stage;
+    }
+    @FXML
+    public void continueClick() throws IOException {
+        Stage returnBikeStage = new Stage();
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/returnBike/BikeDockSelection.fxml"));
+
+        Main.home.close();
+        returnBikeStage.show();
+    }
 }
