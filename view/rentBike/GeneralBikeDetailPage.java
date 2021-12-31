@@ -24,6 +24,7 @@ public class GeneralBikeDetailPage implements Initializable {
     private Stage generalBikeDetailPage;
     public static Stage inputCardStage;
     private RentBikeController rentBikeController;
+    private String money;
 
     @FXML
     private Text bikeInfo;
@@ -64,6 +65,7 @@ public class GeneralBikeDetailPage implements Initializable {
             stringBuilder.append(key+"\t\t:\t"+container.get(key)+"\n");
             System.out.format("%-20s\t:\t%s\n",key,container.get(key));
         }
+        this.money = container.get("cost");
         bikeInfo.setText(stringBuilder.toString());
     }
 
@@ -83,7 +85,7 @@ public class GeneralBikeDetailPage implements Initializable {
 
     @FXML
     public void nextToPay() throws IOException {
-        InputCardIdPage inputCardIdPage = rentBikeController.getInputCardIdPage();
+        InputCardIdPage inputCardIdPage = rentBikeController.getInputCardIdPage(money);
         Stage stage = inputCardIdPage.getInputCardStage();
         inputCardStage = stage;
         InputBikeCodePage.generalBikeStage.close();

@@ -19,16 +19,20 @@ public class InputCardIdPage implements Initializable {
     private RentBikeController rentBikeController;
     private Stage inputCardStage;
     private String cardId;
+    private String moneyFromBikeDetail;
+
+    public InputCardIdPage(String money) {
+        this.moneyFromBikeDetail = money;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        moneyText.setText(this.moneyFromBikeDetail);
     }
 
     @FXML
     public void confirmToPay(){
         cardId = cardTextInput.getText();
-
     }
 
     @FXML

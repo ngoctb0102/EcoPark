@@ -55,8 +55,8 @@ public class RentBikeController {
         return generalBikeDetailPage;
     }
 
-    public InputCardIdPage getInputCardIdPage() throws IOException{
-        InputCardIdPage inputCardIdPage = new InputCardIdPage();
+    public InputCardIdPage getInputCardIdPage(String money) throws IOException{
+        InputCardIdPage inputCardIdPage = new InputCardIdPage(money);
         inputCardIdPage.setRentBikeController(this);
         Stage stage = new Stage();
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/payment/InputCardScreen.fxml"));
