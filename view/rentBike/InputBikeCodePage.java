@@ -31,13 +31,13 @@ public class InputBikeCodePage implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        controller = new RentBikeController();
         errMessage.setText("");
         bikeCodeInput.setText("");
     }
 
     @FXML
     public void submitBikeCode() throws IOException {
-        controller = new RentBikeController();
         bikeCode = bikeCodeInput.getText();
         if (bikeCode.isBlank()){
             EcoMainPage.rentBikeStage.close();

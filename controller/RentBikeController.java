@@ -1,5 +1,7 @@
 package controller;
 
+import bankSubsytem.IBankSubsystem;
+import bankSubsytem.bankAPI.BankManager;
 import generalBikeSubsystem.IGeneralBike;
 import generalBikeSubsystem.generalBikeAPI.GeneralBikeManager;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import rentBikeHistorySubsystem.IRentBikeHistory;
 import rentBikeHistorySubsystem.rentBikeHistoryAPI.RentBikeHistoryManager;
+import view.bank.InputCardIdPage;
 import view.rentBike.GeneralBikeDetailPage;
 import view.rentBike.InputBikeCodePage;
 
@@ -17,11 +20,13 @@ import java.util.Map;
 public class RentBikeController {
     private IGeneralBike generalBike;
     private IRentBikeHistory rentBikeHistory;
+    private IBankSubsystem bankSubsystem;
     private InputBikeCodePage view;
 
     public RentBikeController(){
         this.generalBike = GeneralBikeManager.getInstance();
         this.rentBikeHistory = new RentBikeHistoryManager();
+        this.bankSubsystem = new BankManager();
     }
 
     public boolean checkBikeExist(String bikeCode){
@@ -48,15 +53,16 @@ public class RentBikeController {
         stage.setScene(new Scene(anchorPane));
         generalBikeDetailPage.setGeneralBikeDetailPage(stage);
         return generalBikeDetailPage;
+    }
 
-//        RentBikeController rentBikeController = new RentBikeController();
-//        InputBikeCodePage inputBikeCodePage = new InputBikeCodePage();
-//        inputBikeCodePage.setController(rentBikeController);
-//        Stage stage = new Stage();
-//        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/rentBike/InputBikeCodePage.fxml"));
-//        stage.setScene(new Scene(anchorPane));
-//        inputBikeCodePage.setInputBikeCodeStage(stage);
-//        return inputBikeCodePage;
+    public InputCardIdPage getInputCardIdPage() throws IOException{
+        InputCardIdPage inputCardIdPage = new InputCardIdPage();
+        inputCardIdPage.setRentBikeController(this);
+        Stage stage = new Stage();
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/payment/InputCardScreen.fxml"));
+        stage.setScene(new Scene(anchorPane));
+        inputCardIdPage.setInputCardStage(stage);
+        return inputCardIdPage;
     }
 
 }

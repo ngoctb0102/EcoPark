@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import view.bank.InputCardIdPage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +22,7 @@ import java.util.Set;
 
 public class GeneralBikeDetailPage implements Initializable {
     private Stage generalBikeDetailPage;
+    public static Stage inputCardStage;
     private RentBikeController rentBikeController;
 
     @FXML
@@ -34,6 +36,7 @@ public class GeneralBikeDetailPage implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        rentBikeController = new RentBikeController();
     }
 
     public void setController(RentBikeController rentBikeController) {
@@ -79,7 +82,11 @@ public class GeneralBikeDetailPage implements Initializable {
     }
 
     @FXML
-    public void nextToPay(){
-
+    public void nextToPay() throws IOException {
+        InputCardIdPage inputCardIdPage = rentBikeController.getInputCardIdPage();
+        Stage stage = inputCardIdPage.getInputCardStage();
+        inputCardStage = stage;
+        InputBikeCodePage.generalBikeStage.close();
+        stage.show();
     }
 }
