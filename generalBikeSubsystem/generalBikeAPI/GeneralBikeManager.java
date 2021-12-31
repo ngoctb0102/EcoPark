@@ -12,13 +12,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
-import java.util.Map;
 import static generalBikeSubsystem.generalBikeAPI.GeneralBikeConnector.connect;
 
 public class GeneralBikeManager implements IGeneralBike {
     private static Connection connection;
-    private static HashMap<String,GeneralBikeFactory> records = new HashMap<>();
-    private static GeneralBikeManager instance;
+    private static final HashMap<String,GeneralBikeFactory> records = new HashMap<>();
+    private static GeneralBikeManager instance = new GeneralBikeManager();
 
     private GeneralBikeManager(){
         records.put("Bike",new BikeFactory());
@@ -32,7 +31,8 @@ public class GeneralBikeManager implements IGeneralBike {
         try {
             connection = connect();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM GeneralBike WHERE licensePlate = "+bikeCode);
+            String query = "SELECT * FROM GeneralBike WHERE licensePlate = '"+bikeCode+"';";
+            ResultSet resultSet = statement.executeQuery(query);
             if (!resultSet.next()) isExist = false;
         } catch (SQLException sqlException){
             sqlException.printStackTrace();
@@ -46,9 +46,12 @@ public class GeneralBikeManager implements IGeneralBike {
         try{
             connection = connect();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT type FROM GeneralBike WHERE licensePlate = "+bikeCode);
-            String bikeType = resultSet.getCharacterStream("type").toString();
-            generalBike = createBikeObjectDB(getGeneralBikeWithType(bikeType),bikeCode,connect());
+            String query = "SELECT type FROM GeneralBike WHERE licensePlate = '" +bikeCode+ "';";
+            ResultSet resultSet = statement.executeQuery(query);
+            if(resultSet.next()) {
+                String bikeType = resultSet.getString("type");
+                generalBike = createBikeObjectDB(getGeneralBikeWithType(bikeType),bikeCode,connect());
+            }
         } catch (SQLException sqlException){
             sqlException.printStackTrace();
         }

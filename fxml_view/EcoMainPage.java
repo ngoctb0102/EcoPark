@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 public class EcoMainPage implements Initializable {
     public static Stage rentBikeStage;
     public static Stage returnBikeStage;
-    public static Integer userId;
+    public static Integer userId = 1;
     private EcoMainController controller;
 
     @Override
@@ -29,10 +29,6 @@ public class EcoMainPage implements Initializable {
         Main.home.close();
         rentBikeStage.show();
     }
-
-//    public void setController(EcoMainController controller) {
-//        this.controller = controller;
-//    }
 
     @FXML
     public void returnBikeClick() throws IOException {

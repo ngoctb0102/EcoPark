@@ -14,13 +14,16 @@ public class TwinBikeFactory implements GeneralBikeFactory{
         TwinBike twinBike = new TwinBike();
         try{
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM GeneralBike WHERE licensePlate = "+bikeCode);
-            twinBike.setName(resultSet.getString("name"));
-            twinBike.setWeight(resultSet.getDouble("weight"));
-            twinBike.setLicensePlate(resultSet.getString("licensePlate"));
-            twinBike.setManufacturedDate(resultSet.getDate("manufacturedDate"));
-            twinBike.setImage(resultSet.getString("image"));
-            twinBike.setCost(resultSet.getInt("cost"));
+            String query = "SELECT * FROM GeneralBike WHERE licensePlate = '"+bikeCode+"';";
+            ResultSet resultSet = statement.executeQuery(query);
+            if(resultSet.next()) {
+                twinBike.setName(resultSet.getString("name"));
+                twinBike.setWeight(resultSet.getDouble("weight"));
+                twinBike.setLicensePlate(resultSet.getString("licensePlate"));
+                twinBike.setManufacturedDate(resultSet.getDate("manufacturedDate"));
+                //twinBike.setImage(resultSet.getString("image"));
+                //twinBike.setCost(resultSet.getInt("cost"));
+            }
         }catch (SQLException sqlException){
             sqlException.printStackTrace();
         }
