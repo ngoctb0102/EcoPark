@@ -1,6 +1,7 @@
 package view.rentBike;
 
 import controller.RentBikeController;
+import fxml_view.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,21 +30,18 @@ public class GeneralBikeDetailPage implements Initializable {
     private ImageView bikeImage;
 
     public GeneralBikeDetailPage(){
-        generalBikeDetailPage = new Stage();
-        try{
-            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../../fxml_view/rentBike/GeneralBikeDetailPage.fxml"));
-            generalBikeDetailPage.setScene(new Scene(anchorPane));
-        }catch (IOException ioException){
-            ioException.printStackTrace();
-        }
+        bikeInfo = new Text();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        bikeInfo.setText("");
     }
 
     public void setController(RentBikeController rentBikeController) {
         this.rentBikeController = rentBikeController;
+    }
+
+    public RentBikeController getRentBikeController(){
+        return this.rentBikeController;
     }
 
     public Stage getGeneralBikeDetailPage() {
@@ -56,14 +54,32 @@ public class GeneralBikeDetailPage implements Initializable {
 
     public void display(String bikeCode){
         HashMap<String,String> container = (HashMap<String, String>) getBikeDetail(bikeCode);
-        bikeImage.setImage(new Image(container.get("image")));
+        //bikeImage.setImage(new Image(container.get("image")));
         StringBuilder stringBuilder = new StringBuilder();
         Set<String> set = container.keySet();
         for(String key: set){
-            stringBuilder.append(key+"  :   "+container.get(key)+"\n");
+            stringBuilder.append(key+"\t\t:\t"+container.get(key)+"\n");
+            System.out.format("%-20s\t:\t%s\n",key,container.get(key));
         }
         bikeInfo.setText(stringBuilder.toString());
     }
 
+    public void setGeneralBikeDetailPage(Stage generalBikeDetailPage) {
+        this.generalBikeDetailPage = generalBikeDetailPage;
+    }
 
+    public Text getBikeInfo() {
+        return bikeInfo;
+    }
+
+    @FXML
+    public void returnMain(){
+        InputBikeCodePage.generalBikeStage.close();
+        Main.home.show();
+    }
+
+    @FXML
+    public void nextToPay(){
+
+    }
 }

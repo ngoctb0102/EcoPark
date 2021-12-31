@@ -21,7 +21,7 @@
                </font>
             </Text>
             <Button layoutX="144.0" layoutY="229.0" mnemonicParsing="false" onAction="#returnEcoMain" prefHeight="26.0" prefWidth="83.0" text="Return" />
-            <Text fx:id="errMessage" fill="#eb1602" layoutX="140.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="361.0">
+            <Text fx:id="errMessage" fill="#eb1602" layoutX="99.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="443.0">
                <font>
                   <Font name="Times New Roman" size="24.0" />
                </font>

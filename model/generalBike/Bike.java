@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bike extends GeneralBike{
+
     @Override
     public Map<String, String> encapsulate() {
         Map<String, String> container = new HashMap<>();
@@ -11,9 +12,9 @@ public class Bike extends GeneralBike{
         container.put("Weight",weight.toString());
         container.put("License Plate",licensePlate);
         container.put("Manufactured Date",manufacturedDate.toString());
-        container.put("Cost/Deposit",cost.toString());
+        //container.put("Cost/Deposit",cost.toString());
         container.put("Type","Bike");
-        container.put("Image",image);
+        //container.put("Image",image);
         return container;
     }
 }

@@ -43,7 +43,20 @@ public class RentBikeController {
     public GeneralBikeDetailPage getGeneralBikeDetail() throws IOException {
         GeneralBikeDetailPage generalBikeDetailPage = new GeneralBikeDetailPage();
         generalBikeDetailPage.setController(this);
+        Stage stage = new Stage();
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/rentBike/GeneralBikeDetailPage.fxml"));
+        stage.setScene(new Scene(anchorPane));
+        generalBikeDetailPage.setGeneralBikeDetailPage(stage);
         return generalBikeDetailPage;
+
+//        RentBikeController rentBikeController = new RentBikeController();
+//        InputBikeCodePage inputBikeCodePage = new InputBikeCodePage();
+//        inputBikeCodePage.setController(rentBikeController);
+//        Stage stage = new Stage();
+//        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/rentBike/InputBikeCodePage.fxml"));
+//        stage.setScene(new Scene(anchorPane));
+//        inputBikeCodePage.setInputBikeCodeStage(stage);
+//        return inputBikeCodePage;
     }
 
 }

@@ -19,16 +19,18 @@ public class EBikeFactory implements GeneralBikeFactory{
                             "batteryPercent, loadCycle, estimatedTimeLeft " +
                             "FROM GeneralBike JOIN EBike " +
                             "ON EBike.licensePlate = GeneralBike.licensePlate " +
-                            "WHERE EBike.licensePlate = "+bikeCode);
-            eBike.setName(resultSet.getString("name"));
-            eBike.setWeight(resultSet.getDouble("weight"));
-            eBike.setLicensePlate(resultSet.getString("licensePlate"));
-            eBike.setManufacturedDate(resultSet.getDate("manufacturedDate"));
-            eBike.setImage(resultSet.getString("image"));
-            eBike.setCost(resultSet.getInt("cost"));
-            eBike.setBatteryPercent(resultSet.getDouble("batteryPercent"));
-            eBike.setLoadCycle(resultSet.getInt("loadCycle"));
-            eBike.setEstimatedTimeLeft(resultSet.getTime("estimatedTimeLeft"));
+                            "WHERE EBike.licensePlate = '"+bikeCode+"';");
+            if(resultSet.next()) {
+                eBike.setName(resultSet.getString("name"));
+                eBike.setWeight(resultSet.getDouble("weight"));
+                eBike.setLicensePlate(resultSet.getString("licensePlate"));
+                eBike.setManufacturedDate(resultSet.getDate("manufacturedDate"));
+//                eBike.setImage(resultSet.getString("image"));
+//                eBike.setCost(resultSet.getInt("cost"));
+                eBike.setBatteryPercent(resultSet.getDouble("batteryPercent"));
+                eBike.setLoadCycle(resultSet.getInt("loadCycle"));
+                eBike.setEstimatedTimeLeft(resultSet.getTime("estimatedTimeLeft"));
+            }
         } catch (SQLException sqlException){
             sqlException.printStackTrace();
         }
