@@ -40,12 +40,10 @@ public class RentBikeController {
         return generalBike.getBikeDetail(bikeCode).encapsulate();
     }
 
-    public Stage getGeneralBikeDetail() throws IOException {
+    public GeneralBikeDetailPage getGeneralBikeDetail() throws IOException {
         GeneralBikeDetailPage generalBikeDetailPage = new GeneralBikeDetailPage();
-        Stage stage = new Stage();
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/rentBike/GeneralBikeDetailPage.fxml"));
-        stage.setScene(new Scene(anchorPane));
-        return stage;
+        generalBikeDetailPage.setController(this);
+        return generalBikeDetailPage;
     }
 
 }
