@@ -10,16 +10,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #45A8A8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="view.returnBike.ReturnBikePage">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+      <!-- <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../ISD.ICT.20211-06-master/detailed_design/interface_design/images/icon/ecobike_logo_transparent.png" />
          </image>
-      </ImageView>
-      <Text layoutX="181.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The transaction was successful!">
+      </ImageView> -->
+      <Text fx:id="transaction" layoutX="181.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" >
          <font>
             <Font name="Times New Roman" size="24.0" />
          </font>
       </Text>
+      <!-- <Text layoutX="181.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The transaction was successful!">
+         <font>
+            <Font name="Times New Roman" size="24.0" />
+         </font>
+      </Text> -->
       <Button layoutX="333.0" layoutY="205.0" mnemonicParsing="false" text="Return to HomePage">
          <font>
             <Font name="Times New Roman" size="24.0" />

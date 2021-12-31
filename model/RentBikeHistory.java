@@ -4,10 +4,10 @@ import java.sql.Timestamp;
 
 public class RentBikeHistory {
     private String bikeCode;
-    private String userId;
+    private int userId;
     private int status;
     private Timestamp startTime;
-    public RentBikeHistory(String bikeCode, String userId, int status, Timestamp startTime) {
+    public RentBikeHistory(String bikeCode, int userId, int status, Timestamp startTime) {
         this.bikeCode = bikeCode;
         this.userId = userId;
         this.status = status;
@@ -21,6 +21,21 @@ public class RentBikeHistory {
     }
     public void setBikeCode(String bikeCode) {
         this.bikeCode = bikeCode;
+    }
+    public int getUserId() {
+        return userId;
+    }
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+    public int getStatus() {
+        return status;
+    }
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
     }
     public RentBikeHistory() {
     }
