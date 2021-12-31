@@ -3,11 +3,12 @@ package rentBikeHistorySubsystem.rentBikeHistoryAPI;
 import rentBikeHistorySubsystem.IRentBikeHistory;
 import java.sql.*;
 import static rentBikeHistorySubsystem.rentBikeHistoryAPI.RentBikeHistoryConnector.connect;
+import model.*;
 
 public class RentBikeHistoryManager implements IRentBikeHistory {
     public static Connection connection;
     @Override
-    public int getRentBikeNum(Integer customerId) {
+    public int getRentBikeNum(int customerId) {
         int bikeNum = 0;
         try {
             connection = connect();
@@ -50,7 +51,7 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
     }
 
     @Override
-    public void saveRentBikeHistory(String customerId, String bikeCode, int status, Date startTime) {
+    public void saveRentBikeHistory(int customerId, String bikeCode, int status, Date startTime) {
         try{
             connection = connect();
             Statement statement = connection.createStatement();
@@ -78,5 +79,22 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
             sqlException.printStackTrace();
         }
         return cost;
+    }
+    @Override
+    public RentBikeHistory getRentBikeHistory(int customerId){
+        RentBikeHistory rentHis = new RentBikeHistory();
+        try{
+            connection = connect();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM public.\"rentbikehistory\" WHERE userId = " + customerId + "ORDER BY startTime DESC LIMIT 1");
+            if(resultSet.next()){
+                 rentHis = new RentBikeHistory(resultSet.getString("licensePlate"),resultSet.getInt("userid"),resultSet.getInt("status"),resultSet.getTimestamp("starttime"));
+            }
+            statement.close();
+            connection.close();
+        } catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return rentHis;
     }
 }
