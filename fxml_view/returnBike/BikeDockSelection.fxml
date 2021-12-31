@@ -21,7 +21,7 @@
             </Label>
             <ImageView fitHeight="139.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Logo/ecobike_logo_transparent.png" />
+                  <Image url="@../image/logo/ecobike_logo_transparent.png" />
                </image>
             </ImageView>
          </children>
