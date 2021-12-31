@@ -16,10 +16,7 @@ import model.*;
 
 public class ChooseBikeDockPage implements Initializable{
     private ReturnBikePageController controller;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        controller = new ReturnBikePageController();
-    }
+    
     // public void setController(ReturnBikePageController controller) {
     //     this.controller = controller;
     // }
@@ -32,14 +29,10 @@ public class ChooseBikeDockPage implements Initializable{
 
     @FXML
     public void setDockList(){
-        List<BikeDock> list = controller.getDockList();
+        List<BikeDock> list = this.controller.getDockList();
         String dockList = "";
-        int i = 0;
         for(BikeDock b : list){
-            if((i%3) == 0){
-                dockList = dockList + "\n";
-            }
-            dockList = dockList + b.getDockId() + ": " + b.getDockName() + "    ";
+            dockList = dockList + b.getDockId() + ": " + b.getDockName() + "\n";
         }
         bikeDock.setText(dockList);
     }
@@ -60,6 +53,15 @@ public class ChooseBikeDockPage implements Initializable{
             //
         }
     }
-
+    @FXML
+    public void returnEcoMain(){
+        EcoMainPage.returnBikeStage.close();
+        Main.home.show();
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.controller = new ReturnBikePageController();
+        setDockList();
+    }
     
 }
