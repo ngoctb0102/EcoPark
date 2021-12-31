@@ -40,4 +40,8 @@ public class EcoMainPage implements Initializable {
         Main.home.close();
         returnBikeStage.show();
     }
+    @FXML
+    public void Exit() throws IOException {
+        Main.home.close();
+    }
 }
