@@ -35,7 +35,7 @@
             <Font name="Berlin Sans FB" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="739.0" layoutY="280.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="182.0" text="Exit" textFill="#102828">
+      <Button layoutX="739.0" layoutY="280.0" onAction="#Exit" mnemonicParsing="false" prefHeight="50.0" prefWidth="182.0" text="Exit" textFill="#102828">
          <font>
             <Font name="Berlin Sans FB" size="24.0" />
          </font>

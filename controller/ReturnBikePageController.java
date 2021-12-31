@@ -15,9 +15,11 @@ public class ReturnBikePageController {
     private List<BikeDock> dockList;
     private IRentBikeHistory rentBikeHistory;
     private IBikeDockSubsystem bikeDockSubsystem;
+    private int userId;
     public ReturnBikePageController() {
         this.rentBikeHistory = new RentBikeHistoryManager();
         this.bikeDockSubsystem = new BikeDockManager();
+        this.userId = 1;
     }
     public ReturnBikePage createReturnBikePage(){
         return new ReturnBikePage();
@@ -25,7 +27,7 @@ public class ReturnBikePageController {
     public ChooseBikeDockPage createChooseBikeDockPage(){
         return new ChooseBikeDockPage();
     }
-    public RentBikeHistory getRentBikeHistory(String userId){
+    public RentBikeHistory getRentBikeHistory(){
         return new RentBikeHistory();
     }
 
