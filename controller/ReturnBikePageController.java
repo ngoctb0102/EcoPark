@@ -47,13 +47,15 @@ public class ReturnBikePageController {
         long diff = now.getTime() - rentTime.getTime();
         return (int)(diff / 1000 / 60);
     }
-    public int calculateTotalMoney(){
-        int minute = calculateTime();
-        int cost = rentBikeHistory.getBikeCost(this.rentHis.getBikeCode());
-        if(minute < 10){
+    public int calculateTotalMoney(int cost, int minute){
+        // int minute = calculateTime();
+        // int cost = rentBikeHistory.getBikeCost(this.rentHis.getBikeCode());
+        if(minute <= 10){
             return 0;
+        }else if (minute <= 30){
+            return cost;
         }else{
-            return cost + cost/10*3 * (int)((Math.abs((minute-30)/2) + (minute - 30)/2)/15) ;
+            return (int)(cost + cost/10*3*((Math.abs((minute-30)/2) + (minute - 30)/2)/15 + 1)) ;
         }
     }
     public String getTransactionInfor(){
@@ -61,7 +63,7 @@ public class ReturnBikePageController {
         String temp = "";
         temp = temp + "Chúc mừng bạn đã thanh toán thành công\n";
         temp = temp + "Tổng thời gian bạn đã thuê là " + String.valueOf(calculateTime()) + " phuts\n";
-        temp = temp + "Tổng số tiền bạn đã thanh toán là " + String.valueOf(calculateTotalMoney()) + "\n";
+        temp = temp + "Tổng số tiền bạn đã thanh toán là " + String.valueOf(calculateTotalMoney(rentBikeHistory.getBikeCost(this.rentHis.getBikeCode()),calculateTime())) + "\n";
         return temp;
     }
     public int checkRented(){
