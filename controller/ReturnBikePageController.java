@@ -9,6 +9,12 @@ import bikeDockSubsystem.*;
 import rentBikeHistorySubsystem.*;
 import rentBikeHistorySubsystem.rentBikeHistoryAPI.*;
 import bikeDockSubsystem.bikeDockAPI.*;
+import javafx.stage.Stage;
+import view.rentBike.InputBikeCodePage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import java.io.IOException;
 
 public class ReturnBikePageController {
     private RentBikeHistory rentHis;
@@ -51,14 +57,23 @@ public class ReturnBikePageController {
         }
     }
     public String getTransactionInfor(){
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa\n");
         String temp = "";
         temp = temp + "Chúc mừng bạn đã thanh toán thành công\n";
-        temp = temp + "Tổng thời gian bạn đã thuê là " + String.valueOf(calculateTime()) + "\n";
+        temp = temp + "Tổng thời gian bạn đã thuê là " + String.valueOf(calculateTime()) + " phuts\n";
         temp = temp + "Tổng số tiền bạn đã thanh toán là " + String.valueOf(calculateTotalMoney()) + "\n";
         return temp;
     }
     public boolean checkRented(){
         return rentBikeHistory.checkBikeRent(this.rentHis.getBikeCode());
     }
-    
+    public Stage showTransaction() throws IOException {
+        Stage stage = new Stage();
+        // ReturnBikePage r = new ReturnBikePage();
+        // r.setController(this);
+        // r.setTransaction();
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/returnBike/SuccessTransaction.fxml"));
+        stage.setScene(new Scene(anchorPane));
+        return stage;
+    }
 }

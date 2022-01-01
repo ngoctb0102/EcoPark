@@ -39,6 +39,7 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
             ResultSet resultSet = statement.executeQuery(query);
             if(!resultSet.next()) rentResult = false;
             else {
+
                 if (resultSet.getInt("status") == 0) rentResult = false;
             }
             resultSet.close();
@@ -86,9 +87,9 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
         try{
             connection = connect();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM public.\"rentbikehistory\" WHERE userId = " + customerId + "ORDER BY startTime DESC LIMIT 1");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM public.\"rentbikehistory\" WHERE userid = " + customerId + "ORDER BY starttime DESC LIMIT 1");
             if(resultSet.next()){
-                 rentHis = new RentBikeHistory(resultSet.getString("licensePlate"),resultSet.getInt("userid"),resultSet.getInt("status"),resultSet.getTimestamp("starttime"));
+                 rentHis = new RentBikeHistory(resultSet.getString("licenseplate"),resultSet.getInt("userid"),resultSet.getInt("status"),resultSet.getTimestamp("starttime"));
             }
             statement.close();
             connection.close();

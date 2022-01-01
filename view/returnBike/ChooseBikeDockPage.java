@@ -9,27 +9,23 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import fxml_view.Main;
 
-import java.net.BindException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import model.*;
-import controller.EcoMainController;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+
 import javafx.stage.Stage;
-import view.rentBike.InputBikeCodePage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 public class ChooseBikeDockPage implements Initializable{
     private ReturnBikePageController controller;
+    public static Stage returnBike;
     
-    // public void setController(ReturnBikePageController controller) {
-    //     this.controller = controller;
-    // }
+    public void setController(ReturnBikePageController controller) {
+        this.controller = controller;
+    }
 
     @FXML
     private Text bikeDock;
@@ -47,20 +43,24 @@ public class ChooseBikeDockPage implements Initializable{
         bikeDock.setText(dockList);
     }
     @FXML
-    public void submitBikeDockId(){
+    public void submitBikeDockId() throws IOException{
         String dockId = chooseDock.getText();
         if (dockId.isBlank()){
             EcoMainPage.returnBikeStage.close();
             err.setText("Mã số bãi xe không được phép để trống !");
             EcoMainPage.returnBikeStage.show();
-        } else if (!controller.checkRented()){
+        } //else if (!controller.checkRented()){
+        //     EcoMainPage.returnBikeStage.close();
+        //     err.setText("Bạn chưa thuê xe");
+        //     EcoMainPage.returnBikeStage.show();
+        //     EcoMainPage.returnBikeStage.close();
+        //     Main.home.show();
+        // } 
+        else {
+            ReturnBikePageController returnController = new ReturnBikePageController();
+            returnBike = returnController.showTransaction();
             EcoMainPage.returnBikeStage.close();
-            err.setText("Bạn chưa thuê xe");
-            EcoMainPage.returnBikeStage.show();
-            EcoMainPage.returnBikeStage.close();
-            Main.home.show();
-        } else {
-            //
+            returnBike.show();
         }
     }
     @FXML
@@ -72,19 +72,5 @@ public class ChooseBikeDockPage implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.controller = new ReturnBikePageController();
         setDockList();
-    }
-    public Stage getChooseBikeDockPage() throws IOException {
-        Stage stage = new Stage();
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/returnBike/BikeDockSelection.fxml"));
-        stage.setScene(new Scene(anchorPane));
-        return stage;
-    }
-    @FXML
-    public void continueClick() throws IOException {
-        Stage returnBikeStage = new Stage();
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/returnBike/BikeDockSelection.fxml"));
-
-        Main.home.close();
-        returnBikeStage.show();
     }
 }
