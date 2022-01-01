@@ -21,7 +21,7 @@ public class ReturnBikePageController {
     private List<BikeDock> dockList;
     private IRentBikeHistory rentBikeHistory;
     private IBikeDockSubsystem bikeDockSubsystem;
-    private int userId = 1;
+    private int userId;
     public ReturnBikePageController() {
         this.rentBikeHistory = new RentBikeHistoryManager();
         this.bikeDockSubsystem = new BikeDockManager();
@@ -57,15 +57,15 @@ public class ReturnBikePageController {
         }
     }
     public String getTransactionInfor(){
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa\n");
+        // System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa\n");
         String temp = "";
         temp = temp + "Chúc mừng bạn đã thanh toán thành công\n";
         temp = temp + "Tổng thời gian bạn đã thuê là " + String.valueOf(calculateTime()) + " phuts\n";
         temp = temp + "Tổng số tiền bạn đã thanh toán là " + String.valueOf(calculateTotalMoney()) + "\n";
         return temp;
     }
-    public boolean checkRented(){
-        return rentBikeHistory.checkBikeRent(this.rentHis.getBikeCode());
+    public int checkRented(){
+        return rentBikeHistory.getRentBikeNum(this.rentHis.getUserId());
     }
     public Stage showTransaction() throws IOException {
         Stage stage = new Stage();

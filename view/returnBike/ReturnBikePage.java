@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.stage.Stage;
 import fxml_view.Main;
+import view.returnBike.*;
 public class ReturnBikePage implements Initializable{
     public static Stage returnBikeStage;
     private ReturnBikePageController controller;
@@ -19,12 +20,12 @@ public class ReturnBikePage implements Initializable{
     }
     public void setTransaction(){
         String trans = this.controller.getTransactionInfor();
-        System.out.println(trans);
+        // System.out.println(trans);
         transaction.setText(trans);
     }
     @FXML
     public void returnEcoMain(){
-        EcoMainPage.returnBikeStage.close();
+        ChooseBikeDockPage.returnBike.close();
         Main.home.show();
     }
     @Override
