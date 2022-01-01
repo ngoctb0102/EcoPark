@@ -14,22 +14,27 @@ public class EBikeFactory implements GeneralBikeFactory{
         EBike eBike = new EBike();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(
-                    "SELECT EBike.licensePlate, name, weight, manufacturedDate," +
+            String query = "SELECT EBike.licensePlate, name, weight, manufacturedDate," +
                             "batteryPercent, loadCycle, estimatedTimeLeft " +
                             "FROM GeneralBike JOIN EBike " +
                             "ON EBike.licensePlate = GeneralBike.licensePlate " +
-                            "WHERE EBike.licensePlate = '"+bikeCode+"';");
+                            "WHERE EBike.licensePlate = '"+bikeCode+"';";
+            ResultSet resultSet = statement.executeQuery(query);
             if(resultSet.next()) {
                 eBike.setName(resultSet.getString("name"));
                 eBike.setWeight(resultSet.getDouble("weight"));
                 eBike.setLicensePlate(resultSet.getString("licensePlate"));
                 eBike.setManufacturedDate(resultSet.getDate("manufacturedDate"));
-//                eBike.setImage(resultSet.getString("image"));
-//                eBike.setCost(resultSet.getInt("cost"));
                 eBike.setBatteryPercent(resultSet.getDouble("batteryPercent"));
                 eBike.setLoadCycle(resultSet.getInt("loadCycle"));
                 eBike.setEstimatedTimeLeft(resultSet.getTime("estimatedTimeLeft"));
+            }
+
+            query = "SELECT * FROM Asset WHERE type = 'EBike';";
+            resultSet = statement.executeQuery(query);
+            if(resultSet.next()){
+                eBike.setCost(resultSet.getInt("cost"));
+                eBike.setImage(resultSet.getString("image"));
             }
         } catch (SQLException sqlException){
             sqlException.printStackTrace();

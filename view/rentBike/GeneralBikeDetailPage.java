@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -13,7 +14,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import view.bank.InputCardIdPage;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,13 +30,13 @@ public class GeneralBikeDetailPage implements Initializable {
     private String money;
 
     @FXML
-    private Text bikeInfo;
+    private Label bikeInfo;
 
     @FXML
     private ImageView bikeImage;
 
     public GeneralBikeDetailPage(){
-        bikeInfo = new Text();
+
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,21 +64,23 @@ public class GeneralBikeDetailPage implements Initializable {
         //bikeImage.setImage(new Image(container.get("image")));
         StringBuilder stringBuilder = new StringBuilder();
         Set<String> set = container.keySet();
+        String handler;
         for(String key: set){
-            stringBuilder.append(key+"\t\t:\t"+container.get(key)+"\n");
-            System.out.format("%-20s\t:\t%s\n",key,container.get(key));
+            handler = String.format("%-30s\t:\t%s\n\n",key,container.get(key));
+            if(!key.equals("Image")) {
+                stringBuilder.append(handler);
+            }
         }
-        this.money = container.get("cost");
+//        this.money = container.get("cost");
+        System.out.println(stringBuilder.toString());
         bikeInfo.setText(stringBuilder.toString());
+        bikeImage.setImage(new Image(container.get("Image")));
     }
 
     public void setGeneralBikeDetailPage(Stage generalBikeDetailPage) {
         this.generalBikeDetailPage = generalBikeDetailPage;
     }
 
-    public Text getBikeInfo() {
-        return bikeInfo;
-    }
 
     @FXML
     public void returnMain(){

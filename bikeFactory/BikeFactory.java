@@ -9,11 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class BikeFactory implements GeneralBikeFactory{
-
-    public BikeFactory() {
-        System.out.println("Bike object created!");
-    }
-
     @Override
     public GeneralBike createBikeObject(String bikeCode, Connection connection) {
         Bike bike = new Bike();
@@ -26,8 +21,13 @@ public class BikeFactory implements GeneralBikeFactory{
                 bike.setWeight(resultSet.getDouble("weight"));
                 bike.setLicensePlate(resultSet.getString("licensePlate"));
                 bike.setManufacturedDate(resultSet.getDate("manufacturedDate"));
-                //bike.setImage(resultSet.getString("image"));
-                //bike.setCost(resultSet.getInt("cost"));
+            }
+
+            query = "SELECT * FROM Asset WHERE type = 'Bike';";
+            resultSet = statement.executeQuery(query);
+            if(resultSet.next()){
+                bike.setCost(resultSet.getInt("cost"));
+                bike.setImage(resultSet.getString("image"));
             }
         }catch (SQLException sqlException){
             sqlException.printStackTrace();

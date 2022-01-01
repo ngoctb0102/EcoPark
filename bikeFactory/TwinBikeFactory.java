@@ -21,8 +21,13 @@ public class TwinBikeFactory implements GeneralBikeFactory{
                 twinBike.setWeight(resultSet.getDouble("weight"));
                 twinBike.setLicensePlate(resultSet.getString("licensePlate"));
                 twinBike.setManufacturedDate(resultSet.getDate("manufacturedDate"));
-                //twinBike.setImage(resultSet.getString("image"));
-                //twinBike.setCost(resultSet.getInt("cost"));
+            }
+
+            query = "SELECT * FROM Asset WHERE type = 'TwinBike';";
+            resultSet = statement.executeQuery(query);
+            if(resultSet.next()){
+                twinBike.setCost(resultSet.getInt("cost"));
+                twinBike.setImage(resultSet.getString("image"));
             }
         }catch (SQLException sqlException){
             sqlException.printStackTrace();
