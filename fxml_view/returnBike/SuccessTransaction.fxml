@@ -15,7 +15,7 @@
             <Image url="@../../ISD.ICT.20211-06-master/detailed_design/interface_design/images/icon/ecobike_logo_transparent.png" />
          </image>
       </ImageView> -->
-      <Text fx:id="transaction" layoutX="181.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" >
+      <Text fx:id="transaction" fill="#eb1602" layoutX="140.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="361.0">
          <font>
             <Font name="Times New Roman" size="24.0" />
          </font>
