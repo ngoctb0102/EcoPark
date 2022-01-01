@@ -21,12 +21,15 @@ public class ReturnBikePageController {
     private List<BikeDock> dockList;
     private IRentBikeHistory rentBikeHistory;
     private IBikeDockSubsystem bikeDockSubsystem;
-    private int userId;
+    public int userId;
     public ReturnBikePageController() {
         this.rentBikeHistory = new RentBikeHistoryManager();
         this.bikeDockSubsystem = new BikeDockManager();
         this.userId = 1;
         this.rentHis = this.rentBikeHistory.getRentBikeHistory(userId);
+    }
+    public RentBikeHistory getRentHis() {
+        return rentHis;
     }
     public ReturnBikePage createReturnBikePage(){
         return new ReturnBikePage();
@@ -41,6 +44,9 @@ public class ReturnBikePageController {
     public List<BikeDock> getDockList(){
         return bikeDockSubsystem.getDockList();
     }
+    public int getDeposit(){
+        return rentBikeHistory.getRentBikeDeposit(this.rentHis.getBikeCode());
+    }
     public int calculateTime(){
         Timestamp rentTime = this.rentHis.getStartTime();
         Timestamp now = new Timestamp(System.currentTimeMillis());
@@ -50,6 +56,17 @@ public class ReturnBikePageController {
     public int calculateTotalMoney(int cost, int minute){
         // int minute = calculateTime();
         // int cost = rentBikeHistory.getBikeCost(this.rentHis.getBikeCode());
+        if(minute <= 10){
+            return 0;
+        }else if (minute <= 30){
+            return cost;
+        }else{
+            return (cost + cost/10*3*(int)((Math.abs((minute-30)/2) + (minute - 30)/2)/15 + 1)) ;
+        }
+    }
+    public int calculateTotalMoney(){
+        int minute = calculateTime();
+        int cost = rentBikeHistory.getBikeCost(this.rentHis.getBikeCode());
         if(minute <= 10){
             return 0;
         }else if (minute <= 30){

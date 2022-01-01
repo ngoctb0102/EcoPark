@@ -17,16 +17,24 @@ import model.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import view.bank.InputCardIdPage;
+import view.bank.InputCardIdPage;
+import controller.PaymentController;
+import view.bank.finalPayment.RentPayment;
+
 
 
 public class ChooseBikeDockPage implements Initializable{
     private ReturnBikePageController controller;
     public static Stage returnBike;
-    
+    public static Stage inputCardStage;
+    private PaymentController paymentController = new PaymentController();
     public void setController(ReturnBikePageController controller) {
         this.controller = controller;
     }
-
+    public void setPaymentController(PaymentController paymentController) {
+        this.paymentController = paymentController;
+    }
     @FXML
     private Text bikeDock;
     @FXML
@@ -72,9 +80,16 @@ public class ChooseBikeDockPage implements Initializable{
         }
         else {
             // ReturnBikePageController returnController = new ReturnBikePageController();
-            returnBike = this.controller.showTransaction();
+            RentPayment rentPayment = new RentPayment();
+            rentPayment.setBikeCode(this.controller.getRentHis().getBikeCode());
+            rentPayment.setUserId(this.controller.userId);
+            System.out.println(this.controller.getDeposit());
+            System.out.println(this.controller.calculateTotalMoney());
+            InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(String.valueOf(this.controller.calculateTotalMoney()),this.controller.getDeposit(),rentPayment);
+            Stage stage = inputCardIdPage.getInputCardStage();
+            inputCardStage = stage;
             EcoMainPage.returnBikeStage.close();
-            returnBike.show();
+            stage.show();
         }
     }
     @FXML
