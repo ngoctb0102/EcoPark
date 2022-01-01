@@ -19,6 +19,5 @@ public class BankConnector {
             sqlException.printStackTrace();
         }
         return conn;
-    }
-    
+    }  
 }

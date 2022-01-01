@@ -60,15 +60,18 @@ public class ReturnBikePageController {
         System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa\n");
         String temp = "";
         temp = temp + "Chúc mừng bạn đã thanh toán thành công\n";
-        temp = temp + "Tổng thời gian bạn đã thuê là " + String.valueOf(calculateTime()) + "\n";
+        temp = temp + "Tổng thời gian bạn đã thuê là " + String.valueOf(calculateTime()) + " phuts\n";
         temp = temp + "Tổng số tiền bạn đã thanh toán là " + String.valueOf(calculateTotalMoney()) + "\n";
         return temp;
     }
     public boolean checkRented(){
         return rentBikeHistory.checkBikeRent(this.rentHis.getBikeCode());
     }
-    public Stage continueClick() throws IOException {
+    public Stage showTransaction() throws IOException {
         Stage stage = new Stage();
+        // ReturnBikePage r = new ReturnBikePage();
+        // r.setController(this);
+        // r.setTransaction();
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/returnBike/SuccessTransaction.fxml"));
         stage.setScene(new Scene(anchorPane));
         return stage;

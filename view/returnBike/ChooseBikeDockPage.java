@@ -23,9 +23,9 @@ public class ChooseBikeDockPage implements Initializable{
     private ReturnBikePageController controller;
     public static Stage returnBike;
     
-    // public void setController(ReturnBikePageController controller) {
-    //     this.controller = controller;
-    // }
+    public void setController(ReturnBikePageController controller) {
+        this.controller = controller;
+    }
 
     @FXML
     private Text bikeDock;
@@ -58,7 +58,7 @@ public class ChooseBikeDockPage implements Initializable{
         // } 
         else {
             ReturnBikePageController returnController = new ReturnBikePageController();
-            returnBike =returnController.continueClick();
+            returnBike = returnController.showTransaction();
             EcoMainPage.returnBikeStage.close();
             returnBike.show();
         }
