@@ -46,12 +46,22 @@ public class RentBikeController {
     }
 
     public GeneralBikeDetailPage getGeneralBikeDetail() throws IOException {
-        GeneralBikeDetailPage generalBikeDetailPage = new GeneralBikeDetailPage();
-        generalBikeDetailPage.setController(this);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../fxml_view/rentBike/GeneralBikeDetailPage.fxml"));
         Stage stage = new Stage();
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/rentBike/GeneralBikeDetailPage.fxml"));
+        AnchorPane anchorPane = loader.load();
         stage.setScene(new Scene(anchorPane));
+
+        GeneralBikeDetailPage generalBikeDetailPage = loader.getController();
+        generalBikeDetailPage.setController(this);
         generalBikeDetailPage.setGeneralBikeDetailPage(stage);
+
+//        GeneralBikeDetailPage generalBikeDetailPage = new GeneralBikeDetailPage();
+//        generalBikeDetailPage.setController(this);
+//        Stage stage = new Stage();
+//        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/rentBike/GeneralBikeDetailPage.fxml"));
+//        stage.setScene(new Scene(anchorPane));
+//        generalBikeDetailPage.setGeneralBikeDetailPage(stage);
         return generalBikeDetailPage;
     }
 
