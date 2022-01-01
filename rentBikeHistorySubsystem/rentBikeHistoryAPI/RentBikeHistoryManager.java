@@ -35,12 +35,12 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
             connection = connect();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(
-                        "SELECT state FROM RentBikeHistory " +
-                            "WHERE licensePlate = "+bikeCode+" ORDER BY startTime DESC LIMIT 1");
+                        "SELECT status FROM public.\"rentbikehistory\" " +
+                            "WHERE licenseplate = "+bikeCode+" ORDER BY startTime DESC LIMIT 1");
             if(!resultSet.next()) rentResult = false;
             else {
                 resultSet.next();
-                if (resultSet.getInt("state") == 0) rentResult = false;
+                if (resultSet.getInt("status") == 0) rentResult = false;
             }
             resultSet.close();
             statement.close();
@@ -87,9 +87,9 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
         try{
             connection = connect();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM public.\"rentbikehistory\" WHERE userId = " + customerId + "ORDER BY startTime DESC LIMIT 1");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM public.\"rentbikehistory\" WHERE userid = " + customerId + "ORDER BY starttime DESC LIMIT 1");
             if(resultSet.next()){
-                 rentHis = new RentBikeHistory(resultSet.getString("licensePlate"),resultSet.getInt("userid"),resultSet.getInt("status"),resultSet.getTimestamp("starttime"));
+                 rentHis = new RentBikeHistory(resultSet.getString("licenseplate"),resultSet.getInt("userid"),resultSet.getInt("status"),resultSet.getTimestamp("starttime"));
             }
             statement.close();
             connection.close();
