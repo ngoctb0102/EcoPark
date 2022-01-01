@@ -15,28 +15,17 @@
                   <Font name="Times New Roman" size="24.0" />
                </font>
             </Text>
-            <Text layoutX="110.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Khách hàng :">
+            <Text layoutX="110.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Khách hàng:">
                <font>
                   <Font name="Times New Roman" size="24.0" />
                </font>
             </Text>
-            <Text fill="#10e51b" layoutX="296.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="500.000 VND ">
+            <Text fx:id="errMessage" fill="#e70e0e" layoutX="116.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số dư tài khoản của quý khách không đủ !">
                <font>
                   <Font name="Times New Roman" size="24.0" />
                </font>
             </Text>
-            <Button layoutX="177.0" layoutY="208.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="83.0" text="OK" />
-            <Text layoutX="109.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiền phải trả :">
-               <font>
-                  <Font name="Times New Roman" size="24.0" />
-               </font>
-            </Text>
-            <Text layoutX="109.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tôi đồng ý thanh toán tiền cọc : ">
-               <font>
-                  <Font name="Times New Roman" size="24.0" />
-               </font>
-            </Text>
-            <Button layoutX="367.0" layoutY="208.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="83.0" text="Return" />
+            <Button layoutX="277.0" layoutY="196.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="OK" />
          </children>
       </AnchorPane>
    </children>

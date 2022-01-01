@@ -58,7 +58,7 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
             Statement statement = connection.createStatement();
             statement.executeUpdate(
                     "INSERT INTO RentBikeHistory(licensePlate, userId, status, startTime)" +
-                    "VALUES ("+bikeCode+","+customerId+","+status+","+startTime+")");
+                    "VALUES ('"+bikeCode+"',"+customerId+","+status+",'"+startTime+"')");
             statement.close();
             connection.close();
         } catch (SQLException sqlException){

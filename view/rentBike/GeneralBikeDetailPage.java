@@ -1,22 +1,19 @@
 package view.rentBike;
 
+import controller.PaymentController;
 import controller.RentBikeController;
+import fxml_view.EcoMainPage;
 import fxml_view.Main;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import view.bank.InputCardIdPage;
+import view.bank.finalPayment.RentPayment;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +24,9 @@ public class GeneralBikeDetailPage implements Initializable {
     private Stage generalBikeDetailPage;
     public static Stage inputCardStage;
     private RentBikeController rentBikeController;
+    private PaymentController paymentController;
     private String money;
+    private String bikeCode;
 
     @FXML
     private Label bikeInfo;
@@ -47,8 +46,8 @@ public class GeneralBikeDetailPage implements Initializable {
         this.rentBikeController = rentBikeController;
     }
 
-    public RentBikeController getRentBikeController(){
-        return this.rentBikeController;
+    public void setPaymentController(PaymentController paymentController) {
+        this.paymentController = paymentController;
     }
 
     public Stage getGeneralBikeDetailPage() {
@@ -72,6 +71,7 @@ public class GeneralBikeDetailPage implements Initializable {
             }
         }
         this.money = container.get("Cost/Deposit (VND)");
+        this.bikeCode = container.get("License Plate");
         System.out.println(stringBuilder.toString());
         bikeInfo.setText(stringBuilder.toString());
         bikeImage.setImage(new Image(container.get("Image")));
@@ -90,7 +90,10 @@ public class GeneralBikeDetailPage implements Initializable {
 
     @FXML
     public void nextToPay() throws IOException {
-        InputCardIdPage inputCardIdPage = rentBikeController.getInputCardIdPage(this.money);
+        RentPayment rentPayment = new RentPayment();
+        rentPayment.setBikeCode(bikeCode);
+        rentPayment.setUserId(EcoMainPage.userId);
+        InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(this.money,0,rentPayment);
         Stage stage = inputCardIdPage.getInputCardStage();
         inputCardStage = stage;
         InputBikeCodePage.generalBikeStage.close();
