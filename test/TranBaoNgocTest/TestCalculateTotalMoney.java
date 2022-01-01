@@ -21,12 +21,5 @@ public class TestCalculateTotalMoney{
         System.out.println(String.format("Testing with %d and %d", inputs[0], inputs[1]));
         assertEquals(inputs[1], r.calculateTotalMoney(10000,inputs[0]));
     }
-    // @Test
-    // public void testCalculateTotalMoney(){
-    //     int testSuite[][] = {{0,0},{5,0},{10,0},{15,10000},{30,10000},{40,13000},{45,13000},{46,16000}};
-    //     for(int i = 0;i<7;i++){
-    //         assertEquals(testSuite[i][1],r.calculateTotalMoney(10000, testSuite[i][0]));
-    //     }
-    // }
 }
         

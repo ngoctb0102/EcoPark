@@ -55,7 +55,7 @@ public class ReturnBikePageController {
         }else if (minute <= 30){
             return cost;
         }else{
-            return (int)(cost + cost/10*3*((Math.abs((minute-30)/2) + (minute - 30)/2)/15 + 1)) ;
+            return (cost + cost/10*3*(int)((Math.abs((minute-30)/2) + (minute - 30)/2)/15 + 1)) ;
         }
     }
     public String getTransactionInfor(){
