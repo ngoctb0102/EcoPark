@@ -52,13 +52,13 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
     }
 
     @Override
-    public void saveRentBikeHistory(int customerId, String bikeCode, int status, Date startTime) {
+    public void saveRentBikeHistory(int customerId, String bikeCode, int status, Timestamp startTime) {
         try{
             connection = connect();
             Statement statement = connection.createStatement();
             statement.executeUpdate(
                     "INSERT INTO RentBikeHistory(licensePlate, userId, status, startTime)" +
-                    "VALUES ("+bikeCode+","+customerId+","+status+","+startTime+")");
+                    "VALUES ('"+bikeCode+"',"+customerId+","+status+",'"+startTime+"')");
             statement.close();
             connection.close();
         } catch (SQLException sqlException){
