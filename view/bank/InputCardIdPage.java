@@ -21,13 +21,9 @@ public class InputCardIdPage implements Initializable {
     private String cardId;
     private String moneyFromBikeDetail;
 
-    public InputCardIdPage(String money) {
-        this.moneyFromBikeDetail = money;
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        moneyText.setText(this.moneyFromBikeDetail);
+        //moneyText.setText(this.moneyFromBikeDetail);
     }
 
     @FXML
@@ -50,5 +46,10 @@ public class InputCardIdPage implements Initializable {
 
     public Stage getInputCardStage() {
         return inputCardStage;
+    }
+
+    public void setMoneyFromBikeDetail(String moneyFromBikeDetail) {
+        this.moneyFromBikeDetail = moneyFromBikeDetail;
+        moneyText.setText(this.moneyFromBikeDetail);
     }
 }
