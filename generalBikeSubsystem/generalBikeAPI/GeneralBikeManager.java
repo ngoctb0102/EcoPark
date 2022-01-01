@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import static generalBikeSubsystem.generalBikeAPI.GeneralBikeConnector.connect;
 
@@ -19,7 +22,7 @@ public class GeneralBikeManager implements IGeneralBike {
     private static final HashMap<String,GeneralBikeFactory> records = new HashMap<>();
     private static GeneralBikeManager instance = new GeneralBikeManager();
 
-    private GeneralBikeManager(){
+    public GeneralBikeManager(){
         records.put("Bike",new BikeFactory());
         records.put("TwinBike",new TwinBikeFactory());
         records.put("EBike",new EBikeFactory());
@@ -69,5 +72,36 @@ public class GeneralBikeManager implements IGeneralBike {
 
     public GeneralBikeFactory getGeneralBikeWithType(String bikeType){
         return records.get(bikeType);
+    }
+    @Override
+	public void createBike(HashMap<String, String> BikeInfo) throws ParseException {
+		// TODO Auto-generated method stub
+		try {
+            connection = connect();
+            
+            //insert to general bike table
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("INSERT INTO GeneralBike VALUES ( "
+            		+ "'" + BikeInfo.get("License Plate") + "',"
+            		+ "'" + BikeInfo.get("Name") + "',"
+            		+ Double.parseDouble(BikeInfo.get("Weight")) + ","
+            		+ "'" + BikeInfo.get("Manufactured Date") + "',"
+            		+ "'" + BikeInfo.get("Type") + "',"
+            		+ "'" + BikeInfo.get("DockId") + "'"
+            		+ ")");	
+            if(BikeInfo.get("Type") == "EBike") {
+            	SimpleDateFormat dt = new SimpleDateFormat("hh:mm:ss");
+    			java.util.Date dt2 = dt.parse(BikeInfo.get("Estimate time left"));
+    			Timestamp timestamp = new java.sql.Timestamp(dt2.getTime());
+	           statement.executeUpdate("INSERT INTO EBike VALUES ("
+	        		   + "'" + BikeInfo.get("License Plate") + "',"
+	        		   + Double.parseDouble(BikeInfo.get("Battery Percent")) + ","
+	        		   + Integer.parseInt(BikeInfo.get("Load Cycle")) + ","
+	        		   + "'" + timestamp +"'"
+	        		   + ")");
+            }
+        } catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
     }
 }
