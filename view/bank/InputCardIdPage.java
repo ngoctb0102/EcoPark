@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import view.bank.finalPayment.IPayment;
 import view.rentBike.GeneralBikeDetailPage;
+import view.returnBike.ChooseBikeDockPage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,38 +45,43 @@ public class InputCardIdPage implements Initializable {
     public void confirmToPay(){
         cardId = cardTextInput.getText();
         if(cardId.isBlank()){
-            GeneralBikeDetailPage.inputCardStage.close();
+            // GeneralBikeDetailPage.inputCardStage.close();
+            this.inputCardStage.close();
             errMessage.setText("Thẻ ngân hàng không được để trống!");
-            GeneralBikeDetailPage.inputCardStage.show();
+            // GeneralBikeDetailPage.inputCardStage.show();
+            this.inputCardStage.show();
         } else if (this.controller.getBalance(cardId) < 0){
             // balance = -1 -->
-            GeneralBikeDetailPage.inputCardStage.close();
+            this.inputCardStage.close();
             errMessage.setText("Thẻ không tồn tại!");
             cardTextInput.setText("");
-            GeneralBikeDetailPage.inputCardStage.show();
+            this.inputCardStage.show();
         } else {
             controller.add(cardId,addMoney);
             int subtractResult = controller.subtract(cardId, Integer.parseInt(moneyFromBikeDetail));
             if(subtractResult == 0){
                 //NOT ENOUGH
-                GeneralBikeDetailPage.inputCardStage.close();
+                this.inputCardStage.close();
                 errMessage.setText("Số dư không đủ thanh toán!");
                 cardTextInput.setText("");
-                GeneralBikeDetailPage.inputCardStage.show();
+                this.inputCardStage.show();
             } else if (subtractResult == -1){
                 // ERR WITH UPDATE
-                GeneralBikeDetailPage.inputCardStage.close();
+                this.inputCardStage.close();
                 errMessage.setText("Không thể cập nhật số dư tài khoản");
                 cardTextInput.setText("");
-                GeneralBikeDetailPage.inputCardStage.show();
+                this.inputCardStage.show();
             } else {
                 // PAYMENT SUCCESSFULLY
+                if(ChooseBikeDockPage.inputCardStage != null){
+                    
+                }
                 try {
                     SuccessPaymentPage successPaymentPage = getSuccessPaymentPage(this.iPayment);
                     successPayment = successPaymentPage.getStage();
                     cardTextInput.setText("");
                     errMessage.setText("");
-                    GeneralBikeDetailPage.inputCardStage.close();
+                    this.inputCardStage.close();
                     successPayment.show();
                 }catch (IOException ioException){
                     ioException.printStackTrace();

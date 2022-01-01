@@ -10,4 +10,5 @@ public interface IRentBikeHistory {
     public void saveRentBikeHistory(int customerId, String bikeCode, int status, Timestamp startTime);
     public int getBikeCost(String bikeCode);
     public RentBikeHistory getRentBikeHistory(int customerId);
+    public int getRentBikeDeposit(String bikeCode);
 }
