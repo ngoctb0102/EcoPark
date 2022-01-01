@@ -1,7 +1,6 @@
 package view.bank.finalPayment;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Calendar;
 
 public class RentPayment extends IPayment{
@@ -11,6 +10,6 @@ public class RentPayment extends IPayment{
 
     @Override
     public void completeLastStep() {
-        paymentController.saveRentBikeHistory(userId, bikeCode,1,new Date(Calendar.getInstance().getTime().getTime()));
+        paymentController.saveRentBikeHistory(userId, bikeCode,1,new Timestamp(Calendar.getInstance().getTime().getTime()));
     }
 }

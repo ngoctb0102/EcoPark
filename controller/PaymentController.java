@@ -15,6 +15,7 @@ import view.bank.finalPayment.RentPayment;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Calendar;
 
 public class PaymentController {
@@ -67,7 +68,7 @@ public class PaymentController {
         return successPaymentPage;
     }
 
-    public void saveRentBikeHistory(int customerId, String bikeCode, int status, Date startTime) {
+    public void saveRentBikeHistory(int customerId, String bikeCode, int status, Timestamp startTime) {
         rentBikeHistory.saveRentBikeHistory(customerId,bikeCode,status,startTime);
     }
 }
