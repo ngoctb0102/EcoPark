@@ -11,7 +11,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import rentBikeHistorySubsystem.IRentBikeHistory;
 import rentBikeHistorySubsystem.rentBikeHistoryAPI.RentBikeHistoryManager;
-import view.bank.InputCardIdPage;
 import view.rentBike.GeneralBikeDetailPage;
 import view.rentBike.InputBikeCodePage;
 
@@ -21,13 +20,11 @@ import java.util.Map;
 public class RentBikeController {
     private IGeneralBike generalBike;
     private IRentBikeHistory rentBikeHistory;
-    private IBankSubsystem bankSubsystem;
     private InputBikeCodePage view;
 
     public RentBikeController(){
         this.generalBike = GeneralBikeManager.getInstance();
         this.rentBikeHistory = new RentBikeHistoryManager();
-        this.bankSubsystem = new BankManager();
     }
 
     public boolean checkBikeExist(String bikeCode){
@@ -55,22 +52,9 @@ public class RentBikeController {
 
         GeneralBikeDetailPage generalBikeDetailPage = loader.getController();
         generalBikeDetailPage.setController(this);
+        generalBikeDetailPage.setPaymentController(new PaymentController());
         generalBikeDetailPage.setGeneralBikeDetailPage(stage);
         return generalBikeDetailPage;
-    }
-
-    public InputCardIdPage getInputCardIdPage(String money) throws IOException{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../fxml_view/payment/InputCardScreen.fxml"));
-        Stage stage = new Stage();
-        AnchorPane anchorPane = loader.load();
-        stage.setScene(new Scene(anchorPane));
-
-        InputCardIdPage inputCardIdPage = loader.getController();
-        inputCardIdPage.setRentBikeController(this);
-        inputCardIdPage.setInputCardStage(stage);
-        inputCardIdPage.setMoneyFromBikeDetail(money);
-        return inputCardIdPage;
     }
 
 }
