@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #45A8A8;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #45A8A8;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.rentBike.GeneralBikeDetailPage">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -33,11 +33,11 @@
             <Font name="Times New Roman" size="24.0" />
          </font>
       </Text>
-      <Button layoutX="547.0" layoutY="604.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="237.0" text="Return Main Page">
+      <Button layoutX="547.0" layoutY="604.0" onAction="#returnMain" mnemonicParsing="false" prefHeight="42.0" prefWidth="237.0" text="Return Main Page">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font></Button>
-      <Button layoutX="547.0" layoutY="520.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="237.0" text="Continue &amp; Pay Deposit">
+      <Button layoutX="547.0" layoutY="520.0" onAction="#nextToPay" mnemonicParsing="false" prefHeight="42.0" prefWidth="237.0" text="Continue &amp; Pay Deposit">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font></Button>

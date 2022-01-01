@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #45A8A8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #45A8A8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.bank.InputCardIdPage">
    <children>
       <Text fill="#f46607" layoutX="294.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyễn Văn A">
          <font>
@@ -19,12 +19,12 @@
             <Font name="Times New Roman" size="24.0" />
          </font>
       </Text>
-      <Text fill="#23130d" layoutX="107.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tiền đặt cọc: ">
+      <Text fill="#23130d" layoutX="107.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tiền thanh toán: ">
          <font>
             <Font name="Times New Roman" size="24.0" />
          </font>
       </Text>
-      <Text fill="#f46607" layoutX="294.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="500.000 VND">
+      <Text fill="#f46607" layoutX="294.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" fx:id="moneyText">
          <font>
             <Font name="Times New Roman" size="24.0" />
          </font>
@@ -34,8 +34,8 @@
             <Font name="Times New Roman" size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="201.0" layoutY="164.0" prefHeight="26.0" prefWidth="233.0" />
-      <Button layoutX="236.0" layoutY="228.0" mnemonicParsing="false" text="Return" />
-      <Button layoutX="318.0" layoutY="228.0" mnemonicParsing="false" text="Continue" />
+      <TextField fx:id="cardTextInput" layoutX="201.0" layoutY="164.0" prefHeight="26.0" prefWidth="233.0" />
+      <Button onAction="#returnEcoMain" layoutX="236.0" layoutY="228.0" mnemonicParsing="false" text="Return" />
+      <Button onAction="#confirmToPay" layoutX="318.0" layoutY="228.0" mnemonicParsing="false" text="Continue" />
    </children>
 </AnchorPane>

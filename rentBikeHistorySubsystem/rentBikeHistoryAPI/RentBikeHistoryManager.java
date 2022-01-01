@@ -17,7 +17,7 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
                     "SELECT COUNT(licensePlate) AS bikeNum FROM RentBikeHistory " +
                             " WHERE userId = "+customerId+" AND status = 1");
             if (resultSet.next()){
-                bikeNum = resultSet.getInt("bkeNum");
+                bikeNum = resultSet.getInt("bikeNum");
             }
             resultSet.close();
             statement.close();
@@ -34,12 +34,12 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
         try{
             connection = connect();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(
-                        "SELECT status FROM public.\"rentbikehistory\" " +
-                            "WHERE licenseplate = "+bikeCode+" ORDER BY startTime DESC LIMIT 1");
+            String query = "SELECT status FROM RentBikeHistory " +
+                    "WHERE licensePlate = '"+bikeCode+"' ORDER BY startTime DESC LIMIT 1";
+            ResultSet resultSet = statement.executeQuery(query);
             if(!resultSet.next()) rentResult = false;
             else {
-                resultSet.next();
+
                 if (resultSet.getInt("status") == 0) rentResult = false;
             }
             resultSet.close();
@@ -72,7 +72,7 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
         try{
             connection = connect();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT cost FROM GeneralBike WHERE licensePlate = " + bikeCode);
+            ResultSet resultSet = statement.executeQuery("SELECT cost FROM GeneralBike WHERE licensePlate = \'"+bikeCode+"\';");
             if(resultSet.next()) cost = resultSet.getInt("cost");
             statement.close();
             connection.close();

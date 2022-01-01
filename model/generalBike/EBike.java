@@ -15,9 +15,12 @@ public class EBike extends GeneralBike{
         container.put("Weight",weight.toString());
         container.put("License Plate",licensePlate);
         container.put("Manufactured Date",manufacturedDate.toString());
-        container.put("Cost/Deposit",cost.toString());
+        //container.put("Cost/Deposit",cost.toString());
         container.put("Type","EBike");
-        container.put("Image",image);
+        //container.put("Image",image);
+        container.put("Battery (%)",batteryPercent.toString());
+        container.put("Load Cycle",loadCycle.toString());
+        container.put("Estimated Time Left",estimatedTimeLeft.toString());
         return container;
     }
 

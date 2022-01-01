@@ -1,8 +1,12 @@
 package bankSubsytem;
 
 public interface IBankSubsystem{
-    public int getBlance(String cardId);
-    public void subtract(String cardId, int money);
-    public void add(String cardId, int money);
+    public static final int SUCCESS = 1;
+    public static final int UPDATE_ERR = -1;
+    public static final int NOT_ENOUGH = 0;
+
+    public Integer getBalance(String cardId);
+    public int subtract(String cardId, int money);
+    public int add(String cardId, int money);
 }
     
