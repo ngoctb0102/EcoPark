@@ -71,7 +71,7 @@ public class GeneralBikeDetailPage implements Initializable {
                 stringBuilder.append(handler);
             }
         }
-//        this.money = container.get("cost");
+        this.money = container.get("Cost/Deposit (VND)");
         System.out.println(stringBuilder.toString());
         bikeInfo.setText(stringBuilder.toString());
         bikeImage.setImage(new Image(container.get("Image")));
@@ -90,7 +90,7 @@ public class GeneralBikeDetailPage implements Initializable {
 
     @FXML
     public void nextToPay() throws IOException {
-        InputCardIdPage inputCardIdPage = rentBikeController.getInputCardIdPage(money);
+        InputCardIdPage inputCardIdPage = rentBikeController.getInputCardIdPage(this.money);
         Stage stage = inputCardIdPage.getInputCardStage();
         inputCardStage = stage;
         InputBikeCodePage.generalBikeStage.close();

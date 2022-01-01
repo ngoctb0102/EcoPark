@@ -4,6 +4,7 @@ import bankSubsytem.IBankSubsystem;
 import bankSubsytem.bankAPI.BankManager;
 import generalBikeSubsystem.IGeneralBike;
 import generalBikeSubsystem.generalBikeAPI.GeneralBikeManager;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -55,23 +56,20 @@ public class RentBikeController {
         GeneralBikeDetailPage generalBikeDetailPage = loader.getController();
         generalBikeDetailPage.setController(this);
         generalBikeDetailPage.setGeneralBikeDetailPage(stage);
-
-//        GeneralBikeDetailPage generalBikeDetailPage = new GeneralBikeDetailPage();
-//        generalBikeDetailPage.setController(this);
-//        Stage stage = new Stage();
-//        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/rentBike/GeneralBikeDetailPage.fxml"));
-//        stage.setScene(new Scene(anchorPane));
-//        generalBikeDetailPage.setGeneralBikeDetailPage(stage);
         return generalBikeDetailPage;
     }
 
     public InputCardIdPage getInputCardIdPage(String money) throws IOException{
-        InputCardIdPage inputCardIdPage = new InputCardIdPage(money);
-        inputCardIdPage.setRentBikeController(this);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../fxml_view/payment/InputCardScreen.fxml"));
         Stage stage = new Stage();
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/payment/InputCardScreen.fxml"));
+        AnchorPane anchorPane = loader.load();
         stage.setScene(new Scene(anchorPane));
+
+        InputCardIdPage inputCardIdPage = loader.getController();
+        inputCardIdPage.setRentBikeController(this);
         inputCardIdPage.setInputCardStage(stage);
+        inputCardIdPage.setMoneyFromBikeDetail(money);
         return inputCardIdPage;
     }
 

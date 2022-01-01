@@ -14,7 +14,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         home = new Stage();
         home.setTitle("EcoPark RentBike System");
-        home.setScene(new Scene(root, 900, 600));
+        home.setScene(new Scene(root));
         System.out.println("Welcome to EcoPark RentBike System!");
         home.show();
     }
