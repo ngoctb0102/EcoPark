@@ -119,7 +119,7 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
             Statement statement = connection.createStatement();
             statement.executeUpdate(
                     "UPDATE RentBikeHistory " +
-                    "SET status = '0' " + "WHERE userid = " + customerId + ", licenseplate = " + bikeCode);
+                    "SET status = '0' " + "WHERE userid = \'" + customerId + "\'AND licenseplate = \'" + bikeCode + "\'");
             statement.close();
             connection.close();
         } catch (SQLException sqlException){
