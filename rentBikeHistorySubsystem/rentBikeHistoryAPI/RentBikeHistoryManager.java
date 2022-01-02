@@ -97,4 +97,19 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
         }
         return rentHis;
     }
+    @Override
+    public int getRentBikeDeposit(String bikeCode){
+        int cost = 0;
+        try{
+            connection = connect();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT deposit FROM GeneralBike WHERE licensePlate = \'"+bikeCode+"\';");
+            if(resultSet.next()) cost = resultSet.getInt("deposit");
+            statement.close();
+            connection.close();
+        } catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return cost;
+    }
 }
