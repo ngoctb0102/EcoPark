@@ -11,7 +11,6 @@ public class ReturnPayment extends IPayment{
     @Override
     public void completeLastStep() {
         //update status with bikeCode (licensePlate), userId, status = 0 (No need updating Date)
-        // paymentController.saveRentBikeHistory(userId, bikeCode,0,new Date(Calendar.getInstance().getTime().getTime()));
-        paymentController.returnBikeHistory(userId,bikeCode);
+        paymentController.saveRentBikeHistory(userId, bikeCode,0,new Date(Calendar.getInstance().getTime().getTime()));
     }
 }

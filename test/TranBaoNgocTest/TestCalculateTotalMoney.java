@@ -1,6 +1,7 @@
 package test.TranBaoNgocTest;
 import org.junit.Test;
 
+
 import controller.ReturnBikePageController;
 
 import static org.junit.Assert.*;
@@ -21,3 +22,4 @@ public class TestCalculateTotalMoney{
         assertEquals(inputs[1], r.calculateTotalMoney(10000,inputs[0]));
     }
 }
+        

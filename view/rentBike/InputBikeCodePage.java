@@ -11,12 +11,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class InputBikeCodePage implements Initializable {
     private RentBikeController controller;
     private String bikeCode; //inputted by User
-    public Stage inputBikeCodeStage;
+    public static Stage generalBikeStage;
+    public static Stage inputBikeCodeStage;
     @FXML
     private Text errMessage;
 
@@ -28,6 +31,7 @@ public class InputBikeCodePage implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        controller = new RentBikeController();
         errMessage.setText("");
         bikeCodeInput.setText("");
     }
@@ -36,37 +40,38 @@ public class InputBikeCodePage implements Initializable {
     public void submitBikeCode() throws IOException {
         bikeCode = bikeCodeInput.getText();
         if (bikeCode.isBlank()){
-            this.inputBikeCodeStage.close();
+            EcoMainPage.rentBikeStage.close();
             errMessage.setText("Mã số xe không được phép để trống !");
-            this.inputBikeCodeStage.show();
-        } else if (!controller.checkBikeExist(bikeCode)){
-            this.inputBikeCodeStage.close();
-            bikeCodeInput.setText("");
-            errMessage.setText("Xe không tồn tại !");
-            this.inputBikeCodeStage.show();
+            EcoMainPage.rentBikeStage.show();
         } else if (controller.checkBikeRent(bikeCode)){
-            this.inputBikeCodeStage.close();
+            EcoMainPage.rentBikeStage.close();
             bikeCodeInput.setText("");
             errMessage.setText("Xe đang được người khác thuê !");
-            this.inputBikeCodeStage.show();
+            EcoMainPage.rentBikeStage.show();
+        } else if (!controller.checkBikeExist(bikeCode)){
+            EcoMainPage.rentBikeStage.close();
+            bikeCodeInput.setText("");
+            errMessage.setText("Xe không tồn tại !");
+            EcoMainPage.rentBikeStage.show();
         } else if (controller.getRentBikeNum(EcoMainPage.userId) >= 1){
-            this.inputBikeCodeStage.close();
+            EcoMainPage.rentBikeStage.close();
             bikeCodeInput.setText("");
             errMessage.setText("Quý khách chỉ được phép thuê tối đa 1 xe!");
-            this.inputBikeCodeStage.show();
+            EcoMainPage.rentBikeStage.show();
         } else{
             errMessage.setText("");
             GeneralBikeDetailPage generalBikeDetailPage = controller.getGeneralBikeDetail();
-            Stage generalBikeStage = generalBikeDetailPage.getGeneralBikeDetailPage();
+            generalBikeStage = generalBikeDetailPage.getGeneralBikeDetailPage();
+            System.out.println("Information of selected Bike");
             generalBikeDetailPage.display(bikeCode);
-            this.inputBikeCodeStage.close();
+            EcoMainPage.rentBikeStage.close();
             generalBikeStage.show();
         }
     }
 
     @FXML
     public void returnEcoMain(){
-        this.inputBikeCodeStage.close();
+        EcoMainPage.rentBikeStage.close();
         Main.home.show();
     }
 

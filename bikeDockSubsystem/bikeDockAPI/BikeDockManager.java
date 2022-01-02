@@ -16,7 +16,7 @@ public class BikeDockManager implements IBikeDockSubsystem{
         try {
             connection = connect();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM bikedock ");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM public.\"bikedock\" ");
             while(resultSet.next()){
                 BikeDock bikedock = new BikeDock(resultSet.getString("dockId"),resultSet.getString("dockName"),resultSet.getString("description"),resultSet.getDouble("distance"));
                 list.add(bikedock);

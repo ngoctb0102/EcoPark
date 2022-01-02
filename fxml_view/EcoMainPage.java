@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 public class EcoMainPage implements Initializable {
     public static Stage rentBikeStage;
     public static Stage returnBikeStage;
+    public static Stage returnListDock;
     public static Integer userId = 1;
     private EcoMainController controller;
 
@@ -23,7 +24,8 @@ public class EcoMainPage implements Initializable {
 
     @FXML
     public void rentBikeClick() throws IOException {
-        InputBikeCodePage inputBikeCodePage = controller.getInputBikeCodePage();
+        EcoMainController ecoMainController = new EcoMainController();
+        InputBikeCodePage inputBikeCodePage = ecoMainController.getInputBikeCodePage();
         rentBikeStage = inputBikeCodePage.getInputBikeCodeStage();
         Main.home.close();
         rentBikeStage.show();
@@ -40,9 +42,12 @@ public class EcoMainPage implements Initializable {
     public void Exit() throws IOException {
         Main.home.close();
     }
-
-    public void setController(EcoMainController controller) {
-        this.controller = controller;
+    @FXML
+    public void viewDockClick() throws IOException {
+    	 EcoMainController ecoMainController = new EcoMainController();
+    	 returnListDock = ecoMainController.getListDockPage();
+    	 Main.home.close();
+    	 returnListDock.show();
     }
 }
 

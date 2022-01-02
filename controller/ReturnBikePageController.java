@@ -37,6 +37,9 @@ public class ReturnBikePageController {
     public ChooseBikeDockPage createChooseBikeDockPage(){
         return new ChooseBikeDockPage();
     }
+    public RentBikeHistory getRentBikeHistory(){
+        return new RentBikeHistory();
+    }
 
     public List<BikeDock> getDockList(){
         return bikeDockSubsystem.getDockList();

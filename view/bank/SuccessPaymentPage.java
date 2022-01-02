@@ -31,7 +31,7 @@ public class SuccessPaymentPage {
     public void clickOK(){
         //TODO
         paymentLastStep.completeLastStep();
-        this.stage.close();
+        InputCardIdPage.successPayment.close();
         Main.home.show();
     }
 }

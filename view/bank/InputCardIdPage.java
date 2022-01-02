@@ -1,6 +1,7 @@
 package view.bank;
 
 import controller.PaymentController;
+import fxml_view.EcoMainPage;
 import fxml_view.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +30,7 @@ public class InputCardIdPage implements Initializable {
     private PaymentController controller;
 
     private Stage inputCardStage;
+    public static Stage successPayment;
     private String cardId;
     private String bikeCode;
     private int status;
@@ -45,8 +47,10 @@ public class InputCardIdPage implements Initializable {
     public void confirmToPay() throws IOException{
         cardId = cardTextInput.getText();
         if(cardId.isBlank()){
+            // GeneralBikeDetailPage.inputCardStage.close();
             this.inputCardStage.close();
             errMessage.setText("Thẻ ngân hàng không được để trống!");
+            // GeneralBikeDetailPage.inputCardStage.show();
             this.inputCardStage.show();
         } else if (this.controller.getBalance(cardId) < 0){
             // balance = -1 -->
@@ -79,7 +83,7 @@ public class InputCardIdPage implements Initializable {
                 }
                 try {
                     SuccessPaymentPage successPaymentPage = getSuccessPaymentPage(this.iPayment);
-                    Stage successPayment = successPaymentPage.getStage();
+                    successPayment = successPaymentPage.getStage();
                     cardTextInput.setText("");
                     errMessage.setText("");
                     this.inputCardStage.close();
@@ -93,7 +97,7 @@ public class InputCardIdPage implements Initializable {
 
     @FXML
     public void returnEcoMain(){
-        this.inputCardStage.close();
+        GeneralBikeDetailPage.inputCardStage.close();
         Main.home.show();
     }
 

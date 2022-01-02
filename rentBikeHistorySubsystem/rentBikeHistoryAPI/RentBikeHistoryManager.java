@@ -39,6 +39,7 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
             ResultSet resultSet = statement.executeQuery(query);
             if(!resultSet.next()) rentResult = false;
             else {
+
                 if (resultSet.getInt("status") == 0) rentResult = false;
             }
             resultSet.close();
@@ -86,7 +87,7 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
         try{
             connection = connect();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM rentbikehistory WHERE userid = " + customerId + "ORDER BY starttime DESC LIMIT 1");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM public.\"rentbikehistory\" WHERE userid = " + customerId + "ORDER BY starttime DESC LIMIT 1");
             if(resultSet.next()){
                  rentHis = new RentBikeHistory(resultSet.getString("licenseplate"),resultSet.getInt("userid"),resultSet.getInt("status"),resultSet.getTimestamp("starttime"));
             }
@@ -111,19 +112,5 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
             sqlException.printStackTrace();
         }
         return cost;
-    }
-    @Override
-    public void returnBikeHistory(int customerId, String bikeCode){
-        try{
-            connection = connect();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate(
-                    "UPDATE RentBikeHistory " +
-                    "SET status = '0' " + "WHERE userid = \'" + customerId + "\'AND licenseplate = \'" + bikeCode + "\'");
-            statement.close();
-            connection.close();
-        } catch (SQLException sqlException){
-            sqlException.printStackTrace();
-        }
     }
 }

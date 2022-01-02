@@ -11,9 +11,12 @@ import rentBikeHistorySubsystem.rentBikeHistoryAPI.RentBikeHistoryManager;
 import view.bank.InputCardIdPage;
 import view.bank.SuccessPaymentPage;
 import view.bank.finalPayment.IPayment;
+import view.bank.finalPayment.RentPayment;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 public class PaymentController {
     private IBankSubsystem bankSubsystem;
@@ -67,8 +70,5 @@ public class PaymentController {
 
     public void saveRentBikeHistory(int customerId, String bikeCode, int status, Timestamp startTime) {
         rentBikeHistory.saveRentBikeHistory(customerId,bikeCode,status,startTime);
-    }
-    public void returnBikeHistory(int customerId, String bikeCode){
-        rentBikeHistory.returnBikeHistory(customerId, bikeCode);
     }
 }
