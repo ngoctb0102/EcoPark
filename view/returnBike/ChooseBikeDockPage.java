@@ -20,7 +20,7 @@ import java.io.IOException;
 import view.bank.InputCardIdPage;
 import view.bank.InputCardIdPage;
 import controller.PaymentController;
-import view.bank.finalPayment.RentPayment;
+import view.bank.finalPayment.ReturnPayment;
 
 
 
@@ -80,7 +80,7 @@ public class ChooseBikeDockPage implements Initializable{
         }
         else {
             // ReturnBikePageController returnController = new ReturnBikePageController();
-            RentPayment rentPayment = new RentPayment();
+            ReturnPayment rentPayment = new ReturnPayment();
             rentPayment.setBikeCode(this.controller.getRentHis().getBikeCode());
             rentPayment.setUserId(this.controller.userId);
             System.out.println(this.controller.getDeposit());
