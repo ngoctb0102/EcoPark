@@ -21,6 +21,7 @@ public class RentBikeController {
     private IGeneralBike generalBike;
     private IRentBikeHistory rentBikeHistory;
     private InputBikeCodePage view;
+    private String bikeCode;
 
     public RentBikeController(){
         this.generalBike = GeneralBikeManager.getInstance();
@@ -39,6 +40,10 @@ public class RentBikeController {
         return rentBikeHistory.getRentBikeNum(customerId);
     }
 
+    public void setBikeCode(String bikeCode){
+        this.bikeCode = bikeCode;
+    }
+
     public Map<String, String> getBikeDetail(String bikeCode){
         return generalBike.getBikeDetail(bikeCode).encapsulate();
     }
@@ -53,7 +58,8 @@ public class RentBikeController {
         GeneralBikeDetailPage generalBikeDetailPage = loader.getController();
         generalBikeDetailPage.setController(this);
         generalBikeDetailPage.setPaymentController(new PaymentController());
-        generalBikeDetailPage.setGeneralBikeDetailPage(stage);
+        generalBikeDetailPage.setGeneralBikeDetailStage(stage);
+        generalBikeDetailPage.display(this.bikeCode);
         return generalBikeDetailPage;
     }
 

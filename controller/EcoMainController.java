@@ -17,8 +17,8 @@ public class EcoMainController {
         stage.setScene(new Scene(anchorPane));
 
         InputBikeCodePage inputBikeCodePage = loader.getController();
-        inputBikeCodePage.setController(new RentBikeController());
         inputBikeCodePage.setInputBikeCodeStage(stage);
+        inputBikeCodePage.setController(new RentBikeController());
         return inputBikeCodePage;
     }
 

@@ -56,9 +56,9 @@ public class InputBikeCodePage implements Initializable {
             this.inputBikeCodeStage.show();
         } else{
             errMessage.setText("");
-            GeneralBikeDetailPage generalBikeDetailPage = controller.getGeneralBikeDetail();
-            Stage generalBikeStage = generalBikeDetailPage.getGeneralBikeDetailPage();
-            generalBikeDetailPage.display(bikeCode);
+            this.controller.setBikeCode(bikeCode);
+            GeneralBikeDetailPage generalBikeDetailPage = this.getBikeDetailPage();
+            Stage generalBikeStage = generalBikeDetailPage.getGeneralBikeDetailStage();
             this.inputBikeCodeStage.close();
             generalBikeStage.show();
         }
@@ -80,5 +80,9 @@ public class InputBikeCodePage implements Initializable {
 
     public void setInputBikeCodeStage(Stage inputBikeCodeStage) {
         this.inputBikeCodeStage = inputBikeCodeStage;
+    }
+
+    public GeneralBikeDetailPage getBikeDetailPage() throws IOException {
+        return this.controller.getGeneralBikeDetail();
     }
 }
