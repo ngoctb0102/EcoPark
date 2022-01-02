@@ -23,8 +23,7 @@ public class EcoMainPage implements Initializable {
 
     @FXML
     public void rentBikeClick() throws IOException {
-        EcoMainController ecoMainController = new EcoMainController();
-        InputBikeCodePage inputBikeCodePage = ecoMainController.getInputBikeCodePage();
+        InputBikeCodePage inputBikeCodePage = controller.getInputBikeCodePage();
         rentBikeStage = inputBikeCodePage.getInputBikeCodeStage();
         Main.home.close();
         rentBikeStage.show();
@@ -40,6 +39,10 @@ public class EcoMainPage implements Initializable {
     @FXML
     public void Exit() throws IOException {
         Main.home.close();
+    }
+
+    public void setController(EcoMainController controller) {
+        this.controller = controller;
     }
 }
 
