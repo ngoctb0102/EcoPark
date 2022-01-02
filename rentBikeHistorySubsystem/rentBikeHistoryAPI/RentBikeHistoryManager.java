@@ -68,10 +68,14 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
     @Override
     public int getBikeCost(String bikeCode){
         int cost = 0;
+        String type = null;
         try{
             connection = connect();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT cost FROM GeneralBike WHERE licensePlate = \'"+bikeCode+"\';");
+            ResultSet resultSet = statement.executeQuery("SELECT type FROM GeneralBike WHERE licensePlate = \'"+bikeCode+"\';");
+            if(resultSet.next()) type = resultSet.getString("type");
+
+            resultSet = statement.executeQuery("SELECT cost FROM Asset WHERE type = '"+type+"';");
             if(resultSet.next()) cost = resultSet.getInt("cost");
             statement.close();
             connection.close();
@@ -100,11 +104,15 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
     @Override
     public int getRentBikeDeposit(String bikeCode){
         int cost = 0;
+        String type = null;
         try{
             connection = connect();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT deposit FROM GeneralBike WHERE licensePlate = \'"+bikeCode+"\';");
-            if(resultSet.next()) cost = resultSet.getInt("deposit");
+            ResultSet resultSet = statement.executeQuery("SELECT type FROM GeneralBike WHERE licensePlate = \'"+bikeCode+"\';");
+            if(resultSet.next()) type = resultSet.getString("type");
+
+            resultSet = statement.executeQuery("SELECT cost FROM Asset WHERE type = '"+type+"';");
+            if(resultSet.next()) cost = resultSet.getInt("cost");
             statement.close();
             connection.close();
         } catch (SQLException sqlException){
