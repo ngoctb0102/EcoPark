@@ -68,4 +68,7 @@ public class PaymentController {
     public void saveRentBikeHistory(int customerId, String bikeCode, int status, Timestamp startTime) {
         rentBikeHistory.saveRentBikeHistory(customerId,bikeCode,status,startTime);
     }
+    public void returnBikeHistory(int customerId, String bikeCode){
+        rentBikeHistory.returnBikeHistory(customerId, bikeCode);
+    }
 }
