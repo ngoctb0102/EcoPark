@@ -52,7 +52,7 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
     }
 
     @Override
-    public void saveRentBikeHistory(int customerId, String bikeCode, int status, Date startTime) {
+    public void saveRentBikeHistory(int customerId, String bikeCode, int status, Timestamp startTime) {
         try{
             connection = connect();
             Statement statement = connection.createStatement();

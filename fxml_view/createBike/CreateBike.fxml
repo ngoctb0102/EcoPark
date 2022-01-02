@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #45A8A8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddPageController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../ISD.ICT.20211-06/detailed_design/interface_design/images/icon/ecobike_logo_transparent.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="204.0" layoutY="57.0" prefHeight="35.0" prefWidth="174.0" text="Create Bike">
+         <font>
+            <Font name="Times New Roman" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="256.0" layoutY="204.0" prefHeight="28.0" prefWidth="133.0" text="General Bike">
+         <font>
+            <Font name="Times New Roman" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="name" layoutX="364.0" layoutY="251.0" text="Name:" />
+      <Label layoutX="364.0" layoutY="288.0" text="Weight:" />
+      <Label layoutX="364.0" layoutY="327.0" text="License Plate:" />
+      <Label layoutX="364.0" layoutY="367.0" text="Manufactured Date:" />
+      <TextField fx:id="nameField" layoutX="504.0" layoutY="247.0" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: white;" />
+      <TextField fx:id="weightField" layoutX="504.0" layoutY="282.0" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: white;" />
+      <TextField fx:id="licenseField" layoutX="504.0" layoutY="323.0" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: white;" />
+      <DatePicker fx:id="manufacturedDateField" layoutX="504.0" layoutY="362.0" prefHeight="26.0" prefWidth="214.0" />
+      <Label layoutX="807.0" layoutY="252.0" prefHeight="21.0" prefWidth="75.0" text="Type Bike :" />
+      <ChoiceBox fx:id="choiceBox" layoutX="893.0" layoutY="247.0" prefHeight="28.0" prefWidth="214.0" />
+      <Label fx:id="battery" layoutX="781.0" layoutY="328.0" text="BatteryPercent :" />
+      <TextField fx:id="batteryField" layoutX="893.0" layoutY="323.0" prefHeight="31.0" prefWidth="214.0" style="-fx-background-color: white;" />
+      <Label fx:id="loadCycle" layoutX="807.0" layoutY="367.0" text="LoadCycle :" />
+      <TextField fx:id="loadCycleField" layoutX="893.0" layoutY="362.0" prefHeight="31.0" prefWidth="214.0" style="-fx-background-color: white;" />
+      <Label fx:id="time" layoutX="760.0" layoutY="407.0" text="estimated Time left :" />
+      <TextField fx:id="timeField" layoutX="893.0" layoutY="402.0" prefHeight="31.0" prefWidth="214.0" style="-fx-background-color: white;" />
+      <Button fx:id="createBike" layoutX="920.0" layoutY="538.0" mnemonicParsing="false" onAction="#fireAddEvent" prefHeight="46.0" prefWidth="133.0" text="Create Bike" />
+      <Button layoutX="1169.0" layoutY="2.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" text="Return" />
+      <TextField fx:id="dockIDField" layoutX="893.0" layoutY="283.0" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: white;" />
+      <Label fx:id="dockID" layoutX="821.0" layoutY="288.0" text="dockID" />
+   </children>
+</AnchorPane>
