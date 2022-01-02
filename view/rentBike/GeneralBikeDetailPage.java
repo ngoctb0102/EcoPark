@@ -22,7 +22,6 @@ import java.util.Set;
 
 public class GeneralBikeDetailPage implements Initializable {
     private Stage generalBikeDetailPage;
-    public static Stage inputCardStage;
     private RentBikeController rentBikeController;
     private PaymentController paymentController;
     private String money;
@@ -84,7 +83,7 @@ public class GeneralBikeDetailPage implements Initializable {
 
     @FXML
     public void returnMain(){
-        InputBikeCodePage.generalBikeStage.close();
+        this.generalBikeDetailPage.close();
         Main.home.show();
     }
 
@@ -95,8 +94,7 @@ public class GeneralBikeDetailPage implements Initializable {
         rentPayment.setUserId(EcoMainPage.userId);
         InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(this.money,0,rentPayment);
         Stage stage = inputCardIdPage.getInputCardStage();
-        inputCardStage = stage;
-        InputBikeCodePage.generalBikeStage.close();
+        this.generalBikeDetailPage.close();
         stage.show();
     }
 }

@@ -39,7 +39,6 @@ public class RentBikeHistoryManager implements IRentBikeHistory {
             ResultSet resultSet = statement.executeQuery(query);
             if(!resultSet.next()) rentResult = false;
             else {
-
                 if (resultSet.getInt("status") == 0) rentResult = false;
             }
             resultSet.close();
