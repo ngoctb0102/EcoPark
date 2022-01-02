@@ -10,13 +10,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import view.bank.finalPayment.IPayment;
 import view.rentBike.GeneralBikeDetailPage;
-import view.returnBike.ChooseBikeDockPage;
+import view.returnBike.*;
+import controller.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class InputCardIdPage implements Initializable {
+    public static Stage returnBike;
     @FXML
     private Text moneyText;
 
@@ -42,7 +44,7 @@ public class InputCardIdPage implements Initializable {
     }
 
     @FXML
-    public void confirmToPay(){
+    public void confirmToPay() throws IOException{
         cardId = cardTextInput.getText();
         if(cardId.isBlank()){
             // GeneralBikeDetailPage.inputCardStage.close();
@@ -74,7 +76,10 @@ public class InputCardIdPage implements Initializable {
             } else {
                 // PAYMENT SUCCESSFULLY
                 if(ChooseBikeDockPage.inputCardStage != null){
-                    
+                    ReturnBikePageController returnController = new ReturnBikePageController(); 
+                    returnBike = returnController.showTransaction();
+                    this.inputCardStage.close();
+                    returnBike.show();
                 }
                 try {
                     SuccessPaymentPage successPaymentPage = getSuccessPaymentPage(this.iPayment);
