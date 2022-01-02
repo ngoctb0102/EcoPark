@@ -10,12 +10,14 @@ import java.io.IOException;
 
 public class EcoMainController {
     public InputBikeCodePage getInputBikeCodePage() throws IOException{
-        RentBikeController rentBikeController = new RentBikeController();
-        InputBikeCodePage inputBikeCodePage = new InputBikeCodePage();
-        inputBikeCodePage.setController(rentBikeController);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../fxml_view/rentBike/InputBikeCodePage.fxml"));
         Stage stage = new Stage();
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/rentBike/InputBikeCodePage.fxml"));
+        AnchorPane anchorPane = loader.load();
         stage.setScene(new Scene(anchorPane));
+
+        InputBikeCodePage inputBikeCodePage = loader.getController();
+        inputBikeCodePage.setController(new RentBikeController());
         inputBikeCodePage.setInputBikeCodeStage(stage);
         return inputBikeCodePage;
     }
