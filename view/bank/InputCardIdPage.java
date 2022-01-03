@@ -75,12 +75,12 @@ public class InputCardIdPage implements Initializable {
                 this.inputCardStage.show();
             } else {
                 // PAYMENT SUCCESSFULLY
-                if(ChooseBikeDockPage.inputCardStage != null){
-                    ReturnBikePageController returnController = new ReturnBikePageController(); 
-                    returnBike = returnController.showTransaction();
-                    this.inputCardStage.close();
-                    returnBike.show();
-                }
+                // if(ChooseBikeDockPage.inputCardStage != null){
+                //     ReturnBikePageController returnController = new ReturnBikePageController(); 
+                //     returnBike = returnController.showTransaction();
+                //     this.inputCardStage.close();
+                //     returnBike.show();
+                // }
                 try {
                     SuccessPaymentPage successPaymentPage = getSuccessPaymentPage(this.iPayment);
                     successPayment = successPaymentPage.getStage();

@@ -17,7 +17,10 @@ public class EcoMainController {
         Stage stage = new Stage();
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/rentBike/InputBikeCodePage.fxml"));
         stage.setScene(new Scene(anchorPane));
+
+        InputBikeCodePage inputBikeCodePage = loader.getController();
         inputBikeCodePage.setInputBikeCodeStage(stage);
+        inputBikeCodePage.setController(new RentBikeController());
         return inputBikeCodePage;
     }
 

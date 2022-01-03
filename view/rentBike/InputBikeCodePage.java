@@ -60,11 +60,10 @@ public class InputBikeCodePage implements Initializable {
             EcoMainPage.rentBikeStage.show();
         } else{
             errMessage.setText("");
-            GeneralBikeDetailPage generalBikeDetailPage = controller.getGeneralBikeDetail();
-            generalBikeStage = generalBikeDetailPage.getGeneralBikeDetailPage();
-            System.out.println("Information of selected Bike");
-            generalBikeDetailPage.display(bikeCode);
-            EcoMainPage.rentBikeStage.close();
+            this.controller.setBikeCode(bikeCode);
+            GeneralBikeDetailPage generalBikeDetailPage = this.getBikeDetailPage();
+            Stage generalBikeStage = generalBikeDetailPage.getGeneralBikeDetailStage();
+            this.inputBikeCodeStage.close();
             generalBikeStage.show();
         }
     }
@@ -85,5 +84,9 @@ public class InputBikeCodePage implements Initializable {
 
     public void setInputBikeCodeStage(Stage inputBikeCodeStage) {
         this.inputBikeCodeStage = inputBikeCodeStage;
+    }
+
+    public GeneralBikeDetailPage getBikeDetailPage() throws IOException {
+        return this.controller.getGeneralBikeDetail();
     }
 }

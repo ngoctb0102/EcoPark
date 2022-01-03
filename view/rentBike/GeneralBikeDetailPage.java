@@ -21,8 +21,7 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 public class GeneralBikeDetailPage implements Initializable {
-    private Stage generalBikeDetailPage;
-    public static Stage inputCardStage;
+    private Stage generalBikeDetailStage;
     private RentBikeController rentBikeController;
     private PaymentController paymentController;
     private String money;
@@ -50,8 +49,8 @@ public class GeneralBikeDetailPage implements Initializable {
         this.paymentController = paymentController;
     }
 
-    public Stage getGeneralBikeDetailPage() {
-        return generalBikeDetailPage;
+    public Stage getGeneralBikeDetailStage() {
+        return generalBikeDetailStage;
     }
 
     public Map<String,String> getBikeDetail(String bikeCode){
@@ -77,14 +76,18 @@ public class GeneralBikeDetailPage implements Initializable {
         bikeImage.setImage(new Image(container.get("Image")));
     }
 
-    public void setGeneralBikeDetailPage(Stage generalBikeDetailPage) {
-        this.generalBikeDetailPage = generalBikeDetailPage;
+    public void setGeneralBikeDetailStage(Stage generalBikeDetailStage) {
+        this.generalBikeDetailStage = generalBikeDetailStage;
     }
 
 
     @FXML
     public void returnMain(){
+<<<<<<< HEAD
         InputBikeCodePage.generalBikeStage.close();
+=======
+        this.generalBikeDetailStage.close();
+>>>>>>> main
         Main.home.show();
     }
 
@@ -95,8 +98,12 @@ public class GeneralBikeDetailPage implements Initializable {
         rentPayment.setUserId(EcoMainPage.userId);
         InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(this.money,0,rentPayment);
         Stage stage = inputCardIdPage.getInputCardStage();
+<<<<<<< HEAD
         inputCardStage = stage;
         InputBikeCodePage.generalBikeStage.close();
+=======
+        this.generalBikeDetailStage.close();
+>>>>>>> main
         stage.show();
     }
 }
