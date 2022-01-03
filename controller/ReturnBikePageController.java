@@ -15,6 +15,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
+import view.bank.finalPayment.ReturnPayment;
+import view.bank.InputCardIdPage;
+
 
 public class ReturnBikePageController {
     private RentBikeHistory rentHis;
@@ -22,17 +25,20 @@ public class ReturnBikePageController {
     private IRentBikeHistory rentBikeHistory;
     private IBikeDockSubsystem bikeDockSubsystem;
     public int userId;
+    private ReturnPayment iPayment;
+    private PaymentController paymentController = new PaymentController();
     public ReturnBikePageController() {
         this.rentBikeHistory = new RentBikeHistoryManager();
         this.bikeDockSubsystem = new BikeDockManager();
         this.userId = 1;
         this.rentHis = this.rentBikeHistory.getRentBikeHistory(userId);
+        this.iPayment = new ReturnPayment();
+        this.iPayment.setBikeCode(this.rentHis.getBikeCode());
+        this.iPayment.setUserId(this.userId);
+        this.paymentController.setiPayment(this.iPayment);
     }
     public RentBikeHistory getRentHis() {
         return rentHis;
-    }
-    public ReturnBikePage createReturnBikePage(){
-        return new ReturnBikePage();
     }
     public ChooseBikeDockPage createChooseBikeDockPage(){
         return new ChooseBikeDockPage();
@@ -75,9 +81,8 @@ public class ReturnBikePageController {
     public String getTransactionInfor(){
         // System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa\n");
         String temp = "";
-        temp = temp + "Chúc mừng bạn đã thanh toán thành công\n";
-        temp = temp + "Tổng thời gian bạn đã thuê là " + String.valueOf(calculateTime()) + " phuts\n";
-        temp = temp + "Tổng số tiền bạn đã thanh toán là " + String.valueOf(calculateTotalMoney(rentBikeHistory.getBikeCost(this.rentHis.getBikeCode()),calculateTime())) + "\n";
+        temp = temp + "Tổng thời gian bạn đã thuê là " + String.valueOf(calculateTime()) + " phút\n";
+        temp = temp + "Tổng số tiền bạn phải thanh toán là " + String.valueOf(calculateTotalMoney(rentBikeHistory.getBikeCost(this.rentHis.getBikeCode()),calculateTime())) + "\n";
         return temp;
     }
     public int checkRented(){
@@ -91,5 +96,20 @@ public class ReturnBikePageController {
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/returnBike/SuccessTransaction.fxml"));
         stage.setScene(new Scene(anchorPane));
         return stage;
+    }
+    public InputCardIdPage inputCardIdPage() throws IOException{
+        return this.paymentController.getInputCardIdPage(String.valueOf(this.calculateTotalMoney()),this.getDeposit());
+    }
+    public ReturnBikePage createReturnBikePage() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../fxml_view/returnBike/SuccessTransaction.fxml"));
+        Stage stage = new Stage();
+        AnchorPane anchorPane = loader.load();
+        stage.setScene(new Scene(anchorPane));
+
+        ReturnBikePage returnBikePage = loader.getController();
+        returnBikePage.setReturnBikeStage(stage);
+        returnBikePage.setController(this);
+        return returnBikePage;
     }
 }
