@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import view.rentBike.InputBikeCodePage;
+import view.returnBike.ChooseBikeDockPage;
 
 import java.io.IOException;
 
@@ -22,10 +23,17 @@ public class EcoMainController {
         return inputBikeCodePage;
     }
 
-    public Stage getChooseBikeDockPage() throws IOException {
+    public ChooseBikeDockPage getChooseBikeDockPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../fxml_view/returnBike/BikeDockSelection.fxml"));
         Stage stage = new Stage();
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/returnBike/BikeDockSelection.fxml"));
+        AnchorPane anchorPane = loader.load();
         stage.setScene(new Scene(anchorPane));
-        return stage;
+
+        ChooseBikeDockPage chooseBikeDockPage = loader.getController();
+        chooseBikeDockPage.setChooseBikeDockStage(stage);
+        chooseBikeDockPage.setController(new ReturnBikePageController());
+        return chooseBikeDockPage;
+        
     }
 }

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import view.rentBike.InputBikeCodePage;
+import view.returnBike.ChooseBikeDockPage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,8 +32,8 @@ public class EcoMainPage implements Initializable {
 
     @FXML
     public void returnBikeClick() throws IOException {
-        EcoMainController ecoMainController = new EcoMainController();
-        returnBikeStage = ecoMainController.getChooseBikeDockPage();
+        ChooseBikeDockPage chooseBikeDockPage = controller.getChooseBikeDockPage();
+        returnBikeStage = chooseBikeDockPage.getChooseBikeDockStage();
         Main.home.close();
         returnBikeStage.show();
     }
