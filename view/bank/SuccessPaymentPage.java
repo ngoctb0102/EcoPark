@@ -30,7 +30,7 @@ public class SuccessPaymentPage {
     @FXML
     public void clickOK(){
         //TODO
-        paymentLastStep.completeLastStep();
+        paymentController.completeLastStep();
         this.stage.close();
         Main.home.show();
     }

@@ -2,10 +2,7 @@ package view.returnBike;
 import controller.*;
 import fxml_view.EcoMainPage;
 import javafx.fxml.*;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import fxml_view.Main;
 
@@ -17,23 +14,20 @@ import model.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import view.bank.InputCardIdPage;
-import view.bank.InputCardIdPage;
-import controller.PaymentController;
-import view.bank.finalPayment.ReturnPayment;
 
 
 
 public class ChooseBikeDockPage implements Initializable{
     private ReturnBikePageController controller;
-    public static Stage returnBike;
-    public static Stage inputCardStage;
-    private PaymentController paymentController = new PaymentController();
+    public Stage chooseBikeDockPage;
     public void setController(ReturnBikePageController controller) {
         this.controller = controller;
     }
-    public void setPaymentController(PaymentController paymentController) {
-        this.paymentController = paymentController;
+    public void setChooseBikeDockStage(Stage chooseBikeDockPage) {
+        this.chooseBikeDockPage = chooseBikeDockPage;
+    }
+    public Stage getChooseBikeDockStage() {
+        return chooseBikeDockPage;
     }
     @FXML
     private Text bikeDock;
@@ -79,17 +73,13 @@ public class ChooseBikeDockPage implements Initializable{
             EcoMainPage.returnBikeStage.show();
         }
         else {
-            // ReturnBikePageController returnController = new ReturnBikePageController();
-            ReturnPayment rentPayment = new ReturnPayment();
-            rentPayment.setBikeCode(this.controller.getRentHis().getBikeCode());
-            rentPayment.setUserId(this.controller.userId);
-            System.out.println(this.controller.getDeposit());
-            System.out.println(this.controller.calculateTotalMoney());
-            InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(String.valueOf(this.controller.calculateTotalMoney()),this.controller.getDeposit(),rentPayment);
-            Stage stage = inputCardIdPage.getInputCardStage();
-            inputCardStage = stage;
+            Stage stage = this.controller.createReturnBikePage().getReturnBikeStage();
             EcoMainPage.returnBikeStage.close();
             stage.show();
+            // Stage stage = this.controller.inputCardIdPage().getInputCardStage();
+            // inputCardStage = stage;
+            // EcoMainPage.returnBikeStage.close();
+            // stage.show();
         }
     }
     @FXML

@@ -2,7 +2,7 @@ package view.rentBike;
 
 import controller.PaymentController;
 import controller.RentBikeController;
-import fxml_view.EcoMainPage;
+// import fxml_view.EcoMainPage;
 import fxml_view.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import view.bank.InputCardIdPage;
-import view.bank.finalPayment.RentPayment;
+// import view.bank.finalPayment.RentPayment;
 
 import java.io.IOException;
 import java.net.URL;
@@ -89,10 +89,7 @@ public class GeneralBikeDetailPage implements Initializable {
 
     @FXML
     public void nextToPay() throws IOException {
-        RentPayment rentPayment = new RentPayment();
-        rentPayment.setBikeCode(bikeCode);
-        rentPayment.setUserId(EcoMainPage.userId);
-        InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(this.money,0,rentPayment);
+        InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(this.money,0);
         Stage stage = inputCardIdPage.getInputCardStage();
         this.generalBikeDetailStage.close();
         stage.show();

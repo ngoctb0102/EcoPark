@@ -22,10 +22,10 @@
             <Font name="Times New Roman" size="24.0" />
          </font>
       </Text> -->
-      <!-- <Button layoutX="366.0" layoutY="233.0" mnemonicParsing="false" onAction="#returnEcoMain" text="Return to HomePage">
+      <Button layoutX="366.0" layoutY="233.0" mnemonicParsing="false" onAction="#nextToPay" text="ClickToPay">
          <font>
             <Font name="Times New Roman" size="24.0" />
          </font>
-      </Button> -->
+      </Button>
    </children>
 </AnchorPane>
