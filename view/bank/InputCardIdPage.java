@@ -78,7 +78,7 @@ public class InputCardIdPage implements Initializable {
                     returnBike.show();
                 }
                 try {
-                    SuccessPaymentPage successPaymentPage = getSuccessPaymentPage(this.iPayment);
+                    SuccessPaymentPage successPaymentPage = getSuccessPaymentPage();
                     Stage successPayment = successPaymentPage.getStage();
                     cardTextInput.setText("");
                     errMessage.setText("");
@@ -114,8 +114,8 @@ public class InputCardIdPage implements Initializable {
         this.controller = controller;
     }
 
-    public SuccessPaymentPage getSuccessPaymentPage(IPayment iPayment) throws IOException {
-        return this.controller.getSuccessPaymentPage(iPayment);
+    public SuccessPaymentPage getSuccessPaymentPage() throws IOException {
+        return this.controller.getSuccessPaymentPage();
     }
 
     public void setAddMoney(int addMoney) {

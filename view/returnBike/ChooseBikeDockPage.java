@@ -85,11 +85,11 @@ public class ChooseBikeDockPage implements Initializable{
             rentPayment.setUserId(this.controller.userId);
             System.out.println(this.controller.getDeposit());
             System.out.println(this.controller.calculateTotalMoney());
-            InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(String.valueOf(this.controller.calculateTotalMoney()),this.controller.getDeposit(),rentPayment);
-            Stage stage = inputCardIdPage.getInputCardStage();
-            inputCardStage = stage;
-            EcoMainPage.returnBikeStage.close();
-            stage.show();
+            //InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(String.valueOf(this.controller.calculateTotalMoney()),this.controller.getDeposit(),rentPayment);
+            //Stage stage = inputCardIdPage.getInputCardStage();
+//            inputCardStage = stage;
+//            EcoMainPage.returnBikeStage.close();
+//            stage.show();
         }
     }
     @FXML

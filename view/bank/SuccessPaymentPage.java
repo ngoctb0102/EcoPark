@@ -8,15 +8,10 @@ import view.bank.finalPayment.IPayment;
 
 public class SuccessPaymentPage {
     private PaymentController paymentController;
-    private IPayment paymentLastStep;
     private Stage stage;
 
     public void setPaymentController(PaymentController paymentController) {
         this.paymentController = paymentController;
-    }
-
-    public void setPaymentLastStep(IPayment paymentLastStep) {
-        this.paymentLastStep = paymentLastStep;
     }
 
     public void setStage(Stage stage) {
@@ -30,7 +25,7 @@ public class SuccessPaymentPage {
     @FXML
     public void clickOK(){
         //TODO
-        paymentLastStep.completeLastStep();
+        paymentController.completeLastStep();
         this.stage.close();
         Main.home.show();
     }

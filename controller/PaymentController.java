@@ -18,6 +18,7 @@ import java.sql.Timestamp;
 public class PaymentController {
     private IBankSubsystem bankSubsystem;
     private IRentBikeHistory rentBikeHistory;
+    private IPayment iPayment;
 
     public PaymentController() {
         this.bankSubsystem = new BankManager();
@@ -34,7 +35,7 @@ public class PaymentController {
 
     public int add(String cardId, int money){ return bankSubsystem.add(cardId,money);}
 
-    public InputCardIdPage getInputCardIdPage(String money, int addMoney, IPayment iPayment) throws IOException {
+    public InputCardIdPage getInputCardIdPage(String money, int addMoney) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../fxml_view/payment/InputCardScreen.fxml"));
         Stage stage = new Stage();
@@ -46,11 +47,10 @@ public class PaymentController {
         inputCardIdPage.setInputCardStage(stage);
         inputCardIdPage.setMoneyFromBikeDetail(money);
         inputCardIdPage.setAddMoney(addMoney);
-        inputCardIdPage.setIPayment(iPayment);
         return inputCardIdPage;
     }
 
-    public SuccessPaymentPage getSuccessPaymentPage(IPayment iPayment) throws IOException{
+    public SuccessPaymentPage getSuccessPaymentPage() throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../fxml_view/payment/SuccessPayment.fxml"));
         Stage stage = new Stage();
@@ -60,7 +60,7 @@ public class PaymentController {
         SuccessPaymentPage successPaymentPage = loader.getController();
         successPaymentPage.setPaymentController(this);
         successPaymentPage.setStage(stage);
-        successPaymentPage.setPaymentLastStep(iPayment);
+        //successPaymentPage.setPaymentLastStep(iPayment);
 
         return successPaymentPage;
     }
@@ -70,5 +70,17 @@ public class PaymentController {
     }
     public void returnBikeHistory(int customerId, String bikeCode){
         rentBikeHistory.returnBikeHistory(customerId, bikeCode);
+    }
+
+    public IPayment getiPayment() {
+        return iPayment;
+    }
+
+    public void setiPayment(IPayment iPayment) {
+        this.iPayment = iPayment;
+    }
+
+    public void completeLastStep(){
+        this.iPayment.completeLastStep();
     }
 }

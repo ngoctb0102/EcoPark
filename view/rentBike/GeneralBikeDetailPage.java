@@ -89,10 +89,7 @@ public class GeneralBikeDetailPage implements Initializable {
 
     @FXML
     public void nextToPay() throws IOException {
-        RentPayment rentPayment = new RentPayment();
-        rentPayment.setBikeCode(bikeCode);
-        rentPayment.setUserId(EcoMainPage.userId);
-        InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(this.money,0,rentPayment);
+        InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(this.money,0);
         Stage stage = inputCardIdPage.getInputCardStage();
         this.generalBikeDetailStage.close();
         stage.show();
