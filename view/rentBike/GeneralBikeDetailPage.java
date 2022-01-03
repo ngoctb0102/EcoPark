@@ -2,7 +2,7 @@ package view.rentBike;
 
 import controller.PaymentController;
 import controller.RentBikeController;
-import fxml_view.EcoMainPage;
+// import fxml_view.EcoMainPage;
 import fxml_view.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import view.bank.InputCardIdPage;
-import view.bank.finalPayment.RentPayment;
+// import view.bank.finalPayment.RentPayment;
 
 import java.io.IOException;
 import java.net.URL;

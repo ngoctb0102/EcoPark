@@ -1,6 +1,5 @@
 package view.returnBike;
 import controller.*;
-import fxml_view.EcoMainPage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
@@ -9,9 +8,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.stage.Stage;
-import fxml_view.Main;
 import view.bank.InputCardIdPage;
-import view.returnBike.*;
 public class ReturnBikePage implements Initializable{
     public Stage returnBikeStage;
     private ReturnBikePageController controller;
