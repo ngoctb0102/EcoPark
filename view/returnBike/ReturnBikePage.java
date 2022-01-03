@@ -10,10 +10,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.stage.Stage;
 import fxml_view.Main;
+import view.bank.InputCardIdPage;
 import view.returnBike.*;
 public class ReturnBikePage implements Initializable{
     public Stage returnBikeStage;
     private ReturnBikePageController controller;
+    private PaymentController paymentController;
+    public void setPaymentController(PaymentController paymentController) {
+        this.paymentController = paymentController;
+    }
     public static Stage inputCardStage;
     
     @FXML
@@ -35,9 +40,8 @@ public class ReturnBikePage implements Initializable{
     @FXML
     public void nextToPay() throws IOException{
         this.returnBikeStage.close();
-        Stage stage = this.controller.inputCardIdPage().getInputCardStage();
-        inputCardStage = stage;
-        EcoMainPage.returnBikeStage.close();
+        InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(String.valueOf(this.controller.calculateTotalMoney()),this.controller.getDeposit());
+        Stage stage = inputCardIdPage.getInputCardStage();
         stage.show();
     }
     @Override
