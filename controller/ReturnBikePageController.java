@@ -4,46 +4,32 @@ import view.returnBike.*;
 import java.util.List;
 import java.sql.Timestamp;
 import model.*;
-import model.generalBike.*;
 import bikeDockSubsystem.*;
 import rentBikeHistorySubsystem.*;
 import rentBikeHistorySubsystem.rentBikeHistoryAPI.*;
 import bikeDockSubsystem.bikeDockAPI.*;
 import javafx.stage.Stage;
-import view.rentBike.InputBikeCodePage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import view.bank.finalPayment.ReturnPayment;
-import view.bank.InputCardIdPage;
 
 
 public class ReturnBikePageController {
     private RentBikeHistory rentHis;
-    private List<BikeDock> dockList;
     private IRentBikeHistory rentBikeHistory;
     private IBikeDockSubsystem bikeDockSubsystem;
     public int userId;
-    private ReturnPayment iPayment;
-    private PaymentController paymentController = new PaymentController();
     public ReturnBikePageController() {
         this.rentBikeHistory = new RentBikeHistoryManager();
         this.bikeDockSubsystem = new BikeDockManager();
         this.userId = 1;
         this.rentHis = this.rentBikeHistory.getRentBikeHistory(userId);
-        this.iPayment = new ReturnPayment();
-        this.iPayment.setBikeCode(this.rentHis.getBikeCode());
-        this.iPayment.setUserId(this.userId);
-        this.paymentController.setiPayment(this.iPayment);
     }
     public RentBikeHistory getRentHis() {
         return rentHis;
     }
-    public ChooseBikeDockPage createChooseBikeDockPage(){
-        return new ChooseBikeDockPage();
-    }
-
     public List<BikeDock> getDockList(){
         return bikeDockSubsystem.getDockList();
     }
@@ -97,9 +83,9 @@ public class ReturnBikePageController {
         stage.setScene(new Scene(anchorPane));
         return stage;
     }
-    public InputCardIdPage inputCardIdPage() throws IOException{
-        return this.paymentController.getInputCardIdPage(String.valueOf(this.calculateTotalMoney()),this.getDeposit());
-    }
+    // public InputCardIdPage inputCardIdPage() throws IOException{
+    //     return this.paymentController.getInputCardIdPage(String.valueOf(this.calculateTotalMoney()),this.getDeposit());
+    // }
     public ReturnBikePage createReturnBikePage() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../fxml_view/returnBike/SuccessTransaction.fxml"));
@@ -107,9 +93,16 @@ public class ReturnBikePageController {
         AnchorPane anchorPane = loader.load();
         stage.setScene(new Scene(anchorPane));
 
+        PaymentController paymentController = new PaymentController();
+        ReturnPayment iPayment = new ReturnPayment();
+        iPayment.setBikeCode(this.rentHis.getBikeCode());
+        iPayment.setUserId(this.userId);
+        paymentController.setiPayment(iPayment);
+
         ReturnBikePage returnBikePage = loader.getController();
         returnBikePage.setReturnBikeStage(stage);
         returnBikePage.setController(this);
+        returnBikePage.setPaymentController(paymentController);
         return returnBikePage;
     }
 }
