@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import view.rentBike.InputBikeCodePage;
 
@@ -27,5 +28,11 @@ public class EcoMainController {
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/returnBike/BikeDockSelection.fxml"));
         stage.setScene(new Scene(anchorPane));
         return stage;
+    }
+    public Stage getListDockPage() throws IOException {
+    	Stage stage = new Stage();
+    	Pane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/listdock/SearchListDock.fxml"));
+    	stage.setScene(new Scene(anchorPane));
+    	return stage;
     }
 }
