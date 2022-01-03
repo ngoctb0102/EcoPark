@@ -80,12 +80,12 @@ public class ChooseBikeDockPage implements Initializable{
         }
         else {
             // ReturnBikePageController returnController = new ReturnBikePageController();
-            ReturnPayment rentPayment = new ReturnPayment();
-            rentPayment.setBikeCode(this.controller.getRentHis().getBikeCode());
-            rentPayment.setUserId(this.controller.userId);
+//            ReturnPayment rentPayment = new ReturnPayment();
+//            rentPayment.setBikeCode(this.controller.getRentHis().getBikeCode());
+//            rentPayment.setUserId(this.controller.userId);
             System.out.println(this.controller.getDeposit());
             System.out.println(this.controller.calculateTotalMoney());
-            InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(String.valueOf(this.controller.calculateTotalMoney()),this.controller.getDeposit(),rentPayment);
+            InputCardIdPage inputCardIdPage = paymentController.getInputCardIdPage(String.valueOf(this.controller.calculateTotalMoney()),this.controller.getDeposit());
             Stage stage = inputCardIdPage.getInputCardStage();
             inputCardStage = stage;
             EcoMainPage.returnBikeStage.close();

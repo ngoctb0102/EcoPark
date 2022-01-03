@@ -15,7 +15,6 @@ import java.util.ResourceBundle;
 
 public class InputBikeCodePage implements Initializable {
     private RentBikeController controller;
-    private String bikeCode; //inputted by User
     public Stage inputBikeCodeStage;
     @FXML
     private Text errMessage;
@@ -34,7 +33,8 @@ public class InputBikeCodePage implements Initializable {
 
     @FXML
     public void submitBikeCode() throws IOException {
-        bikeCode = bikeCodeInput.getText();
+        //inputted by User
+        String bikeCode = bikeCodeInput.getText();
         if (bikeCode.isBlank()){
             this.inputBikeCodeStage.close();
             errMessage.setText("Mã số xe không được phép để trống !");

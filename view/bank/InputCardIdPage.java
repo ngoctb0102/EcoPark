@@ -8,9 +8,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import view.bank.finalPayment.IPayment;
-import view.rentBike.GeneralBikeDetailPage;
-import view.returnBike.*;
-import controller.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,9 +26,7 @@ public class InputCardIdPage implements Initializable {
     private PaymentController controller;
 
     private Stage inputCardStage;
-    private String cardId;
     private String bikeCode;
-    private int status;
     private String moneyFromBikeDetail;
     private IPayment iPayment;
     private int addMoney;
@@ -43,7 +38,7 @@ public class InputCardIdPage implements Initializable {
 
     @FXML
     public void confirmToPay() throws IOException{
-        cardId = cardTextInput.getText();
+        String cardId = cardTextInput.getText();
         if(cardId.isBlank()){
             this.inputCardStage.close();
             errMessage.setText("Thẻ ngân hàng không được để trống!");
@@ -78,7 +73,7 @@ public class InputCardIdPage implements Initializable {
                 //     returnBike.show();
                 // }
                 try {
-                    SuccessPaymentPage successPaymentPage = getSuccessPaymentPage(this.iPayment);
+                    SuccessPaymentPage successPaymentPage = getSuccessPaymentPage();
                     Stage successPayment = successPaymentPage.getStage();
                     cardTextInput.setText("");
                     errMessage.setText("");
@@ -114,8 +109,8 @@ public class InputCardIdPage implements Initializable {
         this.controller = controller;
     }
 
-    public SuccessPaymentPage getSuccessPaymentPage(IPayment iPayment) throws IOException {
-        return this.controller.getSuccessPaymentPage(iPayment);
+    public SuccessPaymentPage getSuccessPaymentPage() throws IOException {
+        return this.controller.getSuccessPaymentPage();
     }
 
     public void setAddMoney(int addMoney) {
