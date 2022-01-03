@@ -40,6 +40,7 @@ CREATE TABLE EcoUser(
 CREATE TABLE Asset(
  type varchar(10) primary key,
  cost int,
+ deposit int,
  image varchar(100)
 );
 
@@ -70,9 +71,9 @@ FOREIGN KEY (licensePlate) REFERENCES GeneralBike(licensePlate) ON UPDATE CASCAD
 ALTER TABLE EBike ADD CONSTRAINT fk5
 FOREIGN KEY (licensePlate) REFERENCES GeneralBike(licensePlate) ON UPDATE CASCADE ON DELETE CASCADE;
 
-INSERT INTO Asset VALUES('Bike',400000,'fxml_view/image/generalBike/Bike.png'); 	
-INSERT INTO Asset VALUES('TwinBike',550000,'fxml_view/image/generalBike/TwinBike.jpg'); 
-INSERT INTO Asset VALUES('EBike',700000,'fxml_view/image/generalBike/EBike.jpg'); 	
+INSERT INTO Asset VALUES('Bike',10000,400000,'fxml_view/image/generalBike/Bike.png');
+INSERT INTO Asset VALUES('TwinBike',15000,550000,'fxml_view/image/generalBike/TwinBike.jpg');
+INSERT INTO Asset VALUES('EBike',15000,700000,'fxml_view/image/generalBike/EBike.jpg');
 
 INSERT INTO BikeDock VALUES('TDD','Truong Dinh Dock','',12.5);
 INSERT INTO BikeDock VALUES('MDD','My Dinh Dock','',2.5);

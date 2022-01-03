@@ -26,7 +26,7 @@ public class BikeFactory implements GeneralBikeFactory{
             query = "SELECT * FROM Asset WHERE type = 'Bike';";
             resultSet = statement.executeQuery(query);
             if(resultSet.next()){
-                bike.setCost(resultSet.getInt("cost"));
+                bike.setCost(resultSet.getInt("deposit"));
                 bike.setImage(resultSet.getString("image"));
             }
         }catch (SQLException sqlException){

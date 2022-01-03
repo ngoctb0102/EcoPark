@@ -26,7 +26,7 @@ public class TwinBikeFactory implements GeneralBikeFactory{
             query = "SELECT * FROM Asset WHERE type = 'TwinBike';";
             resultSet = statement.executeQuery(query);
             if(resultSet.next()){
-                twinBike.setCost(resultSet.getInt("cost"));
+                twinBike.setCost(resultSet.getInt("deposit"));
                 twinBike.setImage(resultSet.getString("image"));
             }
         }catch (SQLException sqlException){

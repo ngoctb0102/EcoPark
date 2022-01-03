@@ -33,7 +33,7 @@ public class EBikeFactory implements GeneralBikeFactory{
             query = "SELECT * FROM Asset WHERE type = 'EBike';";
             resultSet = statement.executeQuery(query);
             if(resultSet.next()){
-                eBike.setCost(resultSet.getInt("cost"));
+                eBike.setCost(resultSet.getInt("deposit"));
                 eBike.setImage(resultSet.getString("image"));
             }
         } catch (SQLException sqlException){
