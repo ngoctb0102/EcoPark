@@ -29,3 +29,5 @@ hs_err_pid*
 out/
 .code-workspace
 lib/
+.project
+.classpath
