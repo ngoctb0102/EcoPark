@@ -1,4 +1,4 @@
-package test.MaiDinhTuanTest;
+package test.MaiDInhTuanTest;
 
 import static org.junit.Assert.*;
 
