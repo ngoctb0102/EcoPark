@@ -7,6 +7,6 @@ public class ReturnPayment extends IPayment{
 
     @Override
     public void completeLastStep() {
-        paymentController.returnBikeHistory(userId,bikeCode);
+        rentBikeHistory.returnBikeHistory(userId,bikeCode);
     }
 }

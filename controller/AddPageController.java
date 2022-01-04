@@ -66,7 +66,7 @@ public class AddPageController  implements Initializable{
 	}
 	
 	public void validation() throws NumberFormatException, ParseException  {
-		GeneralBikeManager manager = new GeneralBikeManager();
+		GeneralBikeManager manager = GeneralBikeManager.getInstance();
 		if(nameField.getText().isEmpty() || nameField.getText().length() > 30) 
 			errorMessage("name field is empty or length is larger than 30 character");
 		else if(!weightField.getText().matches("[1-9]{1,2}(\\.[0-9]*)?") || 

@@ -56,6 +56,7 @@ public class RentBikeController {
         RentPayment iPayment = new RentPayment();
         iPayment.setBikeCode(bikeCode);
         iPayment.setUserId(EcoMainPage.userId);
+        iPayment.setRentBikeHistory(this.rentBikeHistory);
         paymentController.setiPayment(iPayment);
 
         GeneralBikeDetailPage generalBikeDetailPage = loader.getController();

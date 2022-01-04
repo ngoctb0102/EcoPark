@@ -10,6 +10,6 @@ public class RentPayment extends IPayment{
 
     @Override
     public void completeLastStep() {
-        paymentController.saveRentBikeHistory(userId, bikeCode,1,new Timestamp(Calendar.getInstance().getTime().getTime()));
+        rentBikeHistory.saveRentBikeHistory(userId, bikeCode,1,new Timestamp(Calendar.getInstance().getTime().getTime()));
     }
 }

@@ -97,6 +97,7 @@ public class ReturnBikePageController {
         ReturnPayment iPayment = new ReturnPayment();
         iPayment.setBikeCode(this.rentHis.getBikeCode());
         iPayment.setUserId(this.userId);
+        iPayment.setRentBikeHistory(this.rentBikeHistory);
         paymentController.setiPayment(iPayment);
 
         ReturnBikePage returnBikePage = loader.getController();

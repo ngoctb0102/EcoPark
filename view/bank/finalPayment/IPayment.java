@@ -1,14 +1,14 @@
 package view.bank.finalPayment;
 
-import controller.PaymentController;
+import rentBikeHistorySubsystem.IRentBikeHistory;
 
 public abstract class IPayment {
-    protected PaymentController paymentController;
     protected String bikeCode;
     protected int userId;
+    protected IRentBikeHistory rentBikeHistory;
 
     public IPayment() {
-        this.paymentController = new PaymentController();
+
     }
 
     public void setBikeCode(String bikeCode) {
@@ -17,6 +17,10 @@ public abstract class IPayment {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public void setRentBikeHistory(IRentBikeHistory rentBikeHistory) {
+        this.rentBikeHistory = rentBikeHistory;
     }
 
     public abstract void completeLastStep();

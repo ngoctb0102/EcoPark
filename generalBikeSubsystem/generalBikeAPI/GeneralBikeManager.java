@@ -22,7 +22,7 @@ public class GeneralBikeManager implements IGeneralBike {
     private static final HashMap<String,GeneralBikeFactory> records = new HashMap<>();
     private static GeneralBikeManager instance = new GeneralBikeManager();
 
-    public GeneralBikeManager(){
+    private GeneralBikeManager(){
         records.put("Bike",new BikeFactory());
         records.put("TwinBike",new TwinBikeFactory());
         records.put("EBike",new EBikeFactory());
@@ -73,6 +73,8 @@ public class GeneralBikeManager implements IGeneralBike {
     public GeneralBikeFactory getGeneralBikeWithType(String bikeType){
         return records.get(bikeType);
     }
+
+
     @Override
 	public void createBike(HashMap<String, String> BikeInfo) throws ParseException {
 		// TODO Auto-generated method stub
