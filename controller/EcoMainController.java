@@ -37,6 +37,16 @@ public class EcoMainController {
         return chooseBikeDockPage;
         
     }
+    
+    public Stage getAdminPage() throws IOException {
+    	System.out.println("click");
+    	Stage stage = new Stage();
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/createBike/AdminHome.fxml"));
+        stage.setScene(new Scene(anchorPane));
+		return stage;
+    	
+    }
+    
     public Stage getListDockPage() throws IOException {
     	Stage stage = new Stage();
     	Pane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/listdock/SearchListDock.fxml"));
