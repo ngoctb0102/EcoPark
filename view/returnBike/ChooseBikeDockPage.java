@@ -2,10 +2,7 @@ package view.returnBike;
 import controller.*;
 import fxml_view.EcoMainPage;
 import javafx.fxml.*;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import fxml_view.Main;
 
@@ -19,14 +16,19 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
+
 public class ChooseBikeDockPage implements Initializable{
     private ReturnBikePageController controller;
-    public static Stage returnBike;
-    
+    public Stage chooseBikeDockPage;
     public void setController(ReturnBikePageController controller) {
         this.controller = controller;
     }
-
+    public void setChooseBikeDockStage(Stage chooseBikeDockPage) {
+        this.chooseBikeDockPage = chooseBikeDockPage;
+    }
+    public Stage getChooseBikeDockStage() {
+        return chooseBikeDockPage;
+    }
     @FXML
     private Text bikeDock;
     @FXML
@@ -71,10 +73,13 @@ public class ChooseBikeDockPage implements Initializable{
             EcoMainPage.returnBikeStage.show();
         }
         else {
-            // ReturnBikePageController returnController = new ReturnBikePageController();
-            returnBike = this.controller.showTransaction();
+            Stage stage = this.controller.createReturnBikePage().getReturnBikeStage();
             EcoMainPage.returnBikeStage.close();
-            returnBike.show();
+            stage.show();
+            // Stage stage = this.controller.inputCardIdPage().getInputCardStage();
+            // inputCardStage = stage;
+            // EcoMainPage.returnBikeStage.close();
+            // stage.show();
         }
     }
     @FXML

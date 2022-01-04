@@ -11,16 +11,14 @@ import rentBikeHistorySubsystem.rentBikeHistoryAPI.RentBikeHistoryManager;
 import view.bank.InputCardIdPage;
 import view.bank.SuccessPaymentPage;
 import view.bank.finalPayment.IPayment;
-import view.bank.finalPayment.RentPayment;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Calendar;
 
 public class PaymentController {
     private IBankSubsystem bankSubsystem;
     private IRentBikeHistory rentBikeHistory;
+    private IPayment iPayment;
 
     public PaymentController() {
         this.bankSubsystem = new BankManager();
@@ -37,7 +35,7 @@ public class PaymentController {
 
     public int add(String cardId, int money){ return bankSubsystem.add(cardId,money);}
 
-    public InputCardIdPage getInputCardIdPage(String money, int addMoney, IPayment iPayment) throws IOException {
+    public InputCardIdPage getInputCardIdPage(String money, int addMoney) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../fxml_view/payment/InputCardScreen.fxml"));
         Stage stage = new Stage();
@@ -49,11 +47,10 @@ public class PaymentController {
         inputCardIdPage.setInputCardStage(stage);
         inputCardIdPage.setMoneyFromBikeDetail(money);
         inputCardIdPage.setAddMoney(addMoney);
-        inputCardIdPage.setIPayment(iPayment);
         return inputCardIdPage;
     }
 
-    public SuccessPaymentPage getSuccessPaymentPage(IPayment iPayment) throws IOException{
+    public SuccessPaymentPage getSuccessPaymentPage() throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../fxml_view/payment/SuccessPayment.fxml"));
         Stage stage = new Stage();
@@ -70,5 +67,16 @@ public class PaymentController {
 
     public void saveRentBikeHistory(int customerId, String bikeCode, int status, Timestamp startTime) {
         rentBikeHistory.saveRentBikeHistory(customerId,bikeCode,status,startTime);
+    }
+    public void returnBikeHistory(int customerId, String bikeCode){
+        rentBikeHistory.returnBikeHistory(customerId, bikeCode);
+    }
+
+    public void setiPayment(IPayment iPayment) {
+        this.iPayment = iPayment;
+    }
+
+    public void completeLastStep(){
+        this.iPayment.completeLastStep();
     }
 }

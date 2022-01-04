@@ -1,5 +1,4 @@
 package view.bank.finalPayment;
-
 public class ReturnPayment extends IPayment{
 
     public ReturnPayment() {
@@ -8,6 +7,6 @@ public class ReturnPayment extends IPayment{
 
     @Override
     public void completeLastStep() {
-        //update status with bikeCode (licensePlate), userId, status = 0 (No need updating Date)
+        paymentController.returnBikeHistory(userId,bikeCode);
     }
 }

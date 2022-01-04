@@ -1,7 +1,6 @@
 package view.bank;
 
 import controller.PaymentController;
-import fxml_view.EcoMainPage;
 import fxml_view.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,13 +8,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import view.bank.finalPayment.IPayment;
-import view.rentBike.GeneralBikeDetailPage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class InputCardIdPage implements Initializable {
+    public static Stage returnBike;
     @FXML
     private Text moneyText;
 
@@ -27,10 +26,7 @@ public class InputCardIdPage implements Initializable {
     private PaymentController controller;
 
     private Stage inputCardStage;
-    public static Stage successPayment;
-    private String cardId;
     private String bikeCode;
-    private int status;
     private String moneyFromBikeDetail;
     private IPayment iPayment;
     private int addMoney;
@@ -41,41 +37,47 @@ public class InputCardIdPage implements Initializable {
     }
 
     @FXML
-    public void confirmToPay(){
-        cardId = cardTextInput.getText();
+    public void confirmToPay() throws IOException{
+        String cardId = cardTextInput.getText();
         if(cardId.isBlank()){
-            GeneralBikeDetailPage.inputCardStage.close();
+            this.inputCardStage.close();
             errMessage.setText("Thẻ ngân hàng không được để trống!");
-            GeneralBikeDetailPage.inputCardStage.show();
+            this.inputCardStage.show();
         } else if (this.controller.getBalance(cardId) < 0){
             // balance = -1 -->
-            GeneralBikeDetailPage.inputCardStage.close();
+            this.inputCardStage.close();
             errMessage.setText("Thẻ không tồn tại!");
             cardTextInput.setText("");
-            GeneralBikeDetailPage.inputCardStage.show();
+            this.inputCardStage.show();
         } else {
             controller.add(cardId,addMoney);
             int subtractResult = controller.subtract(cardId, Integer.parseInt(moneyFromBikeDetail));
             if(subtractResult == 0){
                 //NOT ENOUGH
-                GeneralBikeDetailPage.inputCardStage.close();
+                this.inputCardStage.close();
                 errMessage.setText("Số dư không đủ thanh toán!");
                 cardTextInput.setText("");
-                GeneralBikeDetailPage.inputCardStage.show();
+                this.inputCardStage.show();
             } else if (subtractResult == -1){
                 // ERR WITH UPDATE
-                GeneralBikeDetailPage.inputCardStage.close();
+                this.inputCardStage.close();
                 errMessage.setText("Không thể cập nhật số dư tài khoản");
                 cardTextInput.setText("");
-                GeneralBikeDetailPage.inputCardStage.show();
+                this.inputCardStage.show();
             } else {
                 // PAYMENT SUCCESSFULLY
+                // if(ChooseBikeDockPage.inputCardStage != null){
+                //     ReturnBikePageController returnController = new ReturnBikePageController(); 
+                //     returnBike = returnController.showTransaction();
+                //     this.inputCardStage.close();
+                //     returnBike.show();
+                // }
                 try {
-                    SuccessPaymentPage successPaymentPage = getSuccessPaymentPage(this.iPayment);
-                    successPayment = successPaymentPage.getStage();
+                    SuccessPaymentPage successPaymentPage = getSuccessPaymentPage();
+                    Stage successPayment = successPaymentPage.getStage();
                     cardTextInput.setText("");
                     errMessage.setText("");
-                    GeneralBikeDetailPage.inputCardStage.close();
+                    this.inputCardStage.close();
                     successPayment.show();
                 }catch (IOException ioException){
                     ioException.printStackTrace();
@@ -86,7 +88,7 @@ public class InputCardIdPage implements Initializable {
 
     @FXML
     public void returnEcoMain(){
-        GeneralBikeDetailPage.inputCardStage.close();
+        this.inputCardStage.close();
         Main.home.show();
     }
 
@@ -107,8 +109,8 @@ public class InputCardIdPage implements Initializable {
         this.controller = controller;
     }
 
-    public SuccessPaymentPage getSuccessPaymentPage(IPayment iPayment) throws IOException {
-        return this.controller.getSuccessPaymentPage(iPayment);
+    public SuccessPaymentPage getSuccessPaymentPage() throws IOException {
+        return this.controller.getSuccessPaymentPage();
     }
 
     public void setAddMoney(int addMoney) {
