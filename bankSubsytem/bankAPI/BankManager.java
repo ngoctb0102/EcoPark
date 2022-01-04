@@ -51,6 +51,15 @@ public class BankManager implements IBankSubsystem{
         return subResult;
     }
 
+//    private int getSubtractResult(int money, int balance){
+//        if (balance < money) return NOT_ENOUGH;
+//        else return 2;
+//    }
+
+//    private int getAddResult(int money, int balance){
+//        return money+balance;
+//    }
+
     @Override
     public int add(String cardId, int money){
         int addResult = SUCCESS;

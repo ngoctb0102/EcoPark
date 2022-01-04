@@ -2,7 +2,7 @@ package rentBikeHistorySubsystem;
 
 import java.sql.Timestamp;
 
-import model.*;
+import model.RentBikeHistory;
 
 public interface IRentBikeHistory {
     //Rent Bike

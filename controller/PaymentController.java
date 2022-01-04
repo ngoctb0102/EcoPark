@@ -6,23 +6,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import rentBikeHistorySubsystem.IRentBikeHistory;
-import rentBikeHistorySubsystem.rentBikeHistoryAPI.RentBikeHistoryManager;
 import view.bank.InputCardIdPage;
 import view.bank.SuccessPaymentPage;
 import view.bank.finalPayment.IPayment;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 
 public class PaymentController {
     private IBankSubsystem bankSubsystem;
-    private IRentBikeHistory rentBikeHistory;
     private IPayment iPayment;
 
     public PaymentController() {
         this.bankSubsystem = new BankManager();
-        this.rentBikeHistory = new RentBikeHistoryManager();
     }
 
     public Integer getBalance(String cardId){
@@ -63,13 +58,6 @@ public class PaymentController {
         successPaymentPage.setPaymentLastStep(iPayment);
 
         return successPaymentPage;
-    }
-
-    public void saveRentBikeHistory(int customerId, String bikeCode, int status, Timestamp startTime) {
-        rentBikeHistory.saveRentBikeHistory(customerId,bikeCode,status,startTime);
-    }
-    public void returnBikeHistory(int customerId, String bikeCode){
-        rentBikeHistory.returnBikeHistory(customerId, bikeCode);
     }
 
     public void setiPayment(IPayment iPayment) {
