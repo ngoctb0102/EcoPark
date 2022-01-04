@@ -16,6 +16,7 @@ public class EcoMainPage implements Initializable {
     public static Stage returnBikeStage;
     public static Integer userId = 1;
     private EcoMainController controller;
+	private static Stage returnListDock;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,7 +42,13 @@ public class EcoMainPage implements Initializable {
     public void Exit() throws IOException {
         Main.home.close();
     }
-
+    @FXML
+    public void viewDockClick() throws IOException {
+    	 EcoMainController ecoMainController = new EcoMainController();
+    	 returnListDock = ecoMainController.getListDockPage();
+    	 Main.home.close();
+    	 returnListDock.show();
+    }
     public void setController(EcoMainController controller) {
         this.controller = controller;
     }
