@@ -10,7 +10,6 @@ public class RentBikeHistoryConnector {
     private static final String password = "123";
 //    private static final String user = "tuanvu_local";
 //    private static final String password = "123456";
-    //private static final String table = "RentBikeHistory";
 
     public static Connection connect(){
         Connection conn = null;

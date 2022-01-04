@@ -10,7 +10,7 @@
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #45A8A8;">
          <children>
             <Button onAction="#clickOK" layoutX="247.0" layoutY="174.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="106.0" text="OK" />
-            <Text layoutX="105.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quý khách giao dịch thành công !">
+            <Text layoutX="105.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaction executed successfully !">
                <font>
                   <Font name="Times New Roman" size="30.0" />
                </font>
