@@ -22,6 +22,7 @@ public class EcoMainPage implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+    
 
     @FXML
     public void rentBikeClick() throws IOException {
@@ -38,6 +39,15 @@ public class EcoMainPage implements Initializable {
         Main.home.close();
         returnBikeStage.show();
     }
+	
+    @FXML
+    public void adminHomeClick() throws IOException {
+    	EcoMainController ecoMainController = new EcoMainController();
+        returnAdminStage = ecoMainController.getAdminPage();
+        Main.home.close();
+        returnAdminStage.show();
+    }
+	
     @FXML
     public void Exit() throws IOException {
         Main.home.close();

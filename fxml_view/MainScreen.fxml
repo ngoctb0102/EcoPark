@@ -28,7 +28,7 @@
             <Font name="Berlin Sans FB" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="822.0" layoutY="28.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="182.0" text="Add Bike" textFill="#0a1818">
+      <Button layoutX="822.0" layoutY="28.0" mnemonicParsing="false" onAction="#adminHomeClick" prefHeight="50.0" prefWidth="182.0" text="Add Bike" textFill="#0a1818">
          <font>
             <Font name="Berlin Sans FB" size="24.0" />
          </font>
