@@ -58,18 +58,18 @@ public class ChooseBikeDockPage implements Initializable{
         String dockId = chooseDock.getText();
         if (dockId.isBlank()){
             EcoMainPage.returnBikeStage.close();
-            err.setText("Mã số bãi xe không được phép để trống !");
+            err.setText("DockId cannot be empty !");
             EcoMainPage.returnBikeStage.show();
         } 
         else if (controller.checkRented() == 0){
             EcoMainPage.returnBikeStage.close();
-            err.setText("Bạn chưa thuê xe");
+            err.setText("You haven't rent a bike yet !");
             EcoMainPage.returnBikeStage.show();
             // EcoMainPage.returnBikeStage.close();
             // Main.home.show();
         } else if(checkDockId(dockId) == false){
             EcoMainPage.returnBikeStage.close();
-            err.setText("Bạn nhập sai bãi xe, mời nhập lại");
+            err.setText("Inputted dockID not exist, please input again !");
             EcoMainPage.returnBikeStage.show();
         }
         else {

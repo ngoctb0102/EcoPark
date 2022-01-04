@@ -67,8 +67,8 @@ public class ReturnBikePageController {
     public String getTransactionInfor(){
         // System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa\n");
         String temp = "";
-        temp = temp + "Tổng thời gian bạn đã thuê là " + String.valueOf(calculateTime()) + " phút\n";
-        temp = temp + "Tổng số tiền bạn phải thanh toán là " + String.valueOf(calculateTotalMoney(rentBikeHistory.getBikeCost(this.rentHis.getBikeCode()),calculateTime())) + "\n";
+        temp = temp + "Your total rent time: " + String.valueOf(calculateTime()) + " minute(s)\n";
+        temp = temp + "You need to pay (VND): " + String.valueOf(calculateTotalMoney(rentBikeHistory.getBikeCost(this.rentHis.getBikeCode()),calculateTime())) + "\n";
         return temp;
     }
     public int checkRented(){

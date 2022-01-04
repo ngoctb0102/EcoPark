@@ -37,22 +37,22 @@ public class InputBikeCodePage implements Initializable {
         String bikeCode = bikeCodeInput.getText();
         if (bikeCode.isBlank()){
             this.inputBikeCodeStage.close();
-            errMessage.setText("Mã số xe không được phép để trống !");
+            errMessage.setText("Please fill in this blank bikeCode !");
             this.inputBikeCodeStage.show();
         } else if (!controller.checkBikeExist(bikeCode)){
             this.inputBikeCodeStage.close();
             bikeCodeInput.setText("");
-            errMessage.setText("Xe không tồn tại !");
+            errMessage.setText("Bike with inputted bikeCode not exist !");
             this.inputBikeCodeStage.show();
         } else if (controller.checkBikeRent(bikeCode)){
             this.inputBikeCodeStage.close();
             bikeCodeInput.setText("");
-            errMessage.setText("Xe đang được người khác thuê !");
+            errMessage.setText("Bike with inputted bikeCode is being rent !");
             this.inputBikeCodeStage.show();
         } else if (controller.getRentBikeNum(EcoMainPage.userId) >= 1){
             this.inputBikeCodeStage.close();
             bikeCodeInput.setText("");
-            errMessage.setText("Quý khách chỉ được phép thuê tối đa 1 xe!");
+            errMessage.setText("You can only rent 1 bike with 1 account !");
             this.inputBikeCodeStage.show();
         } else{
             errMessage.setText("");

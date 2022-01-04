@@ -41,12 +41,12 @@ public class InputCardIdPage implements Initializable {
         String cardId = cardTextInput.getText();
         if(cardId.isBlank()){
             this.inputCardStage.close();
-            errMessage.setText("Thẻ ngân hàng không được để trống!");
+            errMessage.setText("Please fill in this blank cardId field !");
             this.inputCardStage.show();
         } else if (this.controller.getBalance(cardId) < 0){
             // balance = -1 -->
             this.inputCardStage.close();
-            errMessage.setText("Thẻ không tồn tại!");
+            errMessage.setText("cardId not existed !");
             cardTextInput.setText("");
             this.inputCardStage.show();
         } else {
@@ -55,13 +55,13 @@ public class InputCardIdPage implements Initializable {
             if(subtractResult == 0){
                 //NOT ENOUGH
                 this.inputCardStage.close();
-                errMessage.setText("Số dư không đủ thanh toán!");
+                errMessage.setText("Your balance is not enough to pay !");
                 cardTextInput.setText("");
                 this.inputCardStage.show();
             } else if (subtractResult == -1){
                 // ERR WITH UPDATE
                 this.inputCardStage.close();
-                errMessage.setText("Không thể cập nhật số dư tài khoản");
+                errMessage.setText("Cannot update your balance !");
                 cardTextInput.setText("");
                 this.inputCardStage.show();
             } else {

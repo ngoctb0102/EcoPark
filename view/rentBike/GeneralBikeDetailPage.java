@@ -2,7 +2,6 @@ package view.rentBike;
 
 import controller.PaymentController;
 import controller.RentBikeController;
-// import fxml_view.EcoMainPage;
 import fxml_view.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import view.bank.InputCardIdPage;
-// import view.bank.finalPayment.RentPayment;
 
 import java.io.IOException;
 import java.net.URL;
@@ -71,7 +69,7 @@ public class GeneralBikeDetailPage implements Initializable {
         }
         this.money = container.get("Cost/Deposit (VND)");
         this.bikeCode = container.get("License Plate");
-        System.out.println(stringBuilder.toString());
+        //System.out.println(stringBuilder.toString());
         bikeInfo.setText(stringBuilder.toString());
         bikeImage.setImage(new Image(container.get("Image")));
     }
