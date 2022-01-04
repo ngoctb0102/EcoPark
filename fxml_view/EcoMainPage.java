@@ -43,7 +43,7 @@ public class EcoMainPage implements Initializable {
     @FXML
     public void adminHomeClick() throws IOException {
     	EcoMainController ecoMainController = new EcoMainController();
-        returnAdminStage = ecoMainController.getAdminPage();
+        Stage returnAdminStage = ecoMainController.getAdminPage();
         Main.home.close();
         returnAdminStage.show();
     }
