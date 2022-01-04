@@ -39,7 +39,6 @@ public class EcoMainController {
     }
     
     public Stage getAdminPage() throws IOException {
-    	System.out.println("click");
     	Stage stage = new Stage();
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("../fxml_view/createBike/AdminHome.fxml"));
         stage.setScene(new Scene(anchorPane));
